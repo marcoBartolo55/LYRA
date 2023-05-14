@@ -10,24 +10,23 @@ window.addEventListener("message", (event) => {
   });
 
 
-
-const textarea = document.getElementById('agrandable');
-textarea.addEventListener('input', function() {
-  this.style.height = 'auto'; /* Reinicia la altura */
-  this.style.height = this.scrollHeight + 'px'; /* Ajusta la altura */
-});
-
-textarea.addEventListener('input', function() {
-  if (this.value === '') {
-    this.style.height = '23px'; /* Establece la altura en 10px */
-  } else {
-    this.style.height = 'auto'; /* Reinicia la altura */
-    this.style.height = this.scrollHeight + 'px'; /* Ajusta la altura */
-  }
-});
-
-
-
-
-
-
+  document.addEventListener("DOMContentLoaded", function() {
+    const textareas = document.querySelectorAll('textarea.agrandable');
+    textareas.forEach(textarea => {
+      textarea.addEventListener('input', function() {
+        this.style.height = 'auto';
+        this.style.height = this.scrollHeight + 'px';
+      });
+  
+      textarea.addEventListener('input', function() {
+        if (this.value === '') {
+          this.style.height = '23px';
+        } else {
+          this.style.height = 'auto';
+          this.style.height = this.scrollHeight + 'px';
+        }
+      });
+  
+      textarea.style.width = textarea.scrollWidth + 'px';
+    });
+  });

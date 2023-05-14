@@ -319,7 +319,8 @@ background-color: #c4b0ec38 ;
 }
 
 .login-container{
-  transform: translateY(90px) scale(1);
+  transform:scale(1);
+  margin-top: 60px;
 }
 
 .login-box{
