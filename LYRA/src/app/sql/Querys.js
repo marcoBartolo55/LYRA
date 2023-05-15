@@ -68,7 +68,7 @@ db.ActualizardatosDoctor = (Id_Usuario,Nombre,Apellido,Edad,Sexo,Correo)=>{
 //Gonzalo
 db.ActualizarPassDoctor = (Usuario,Pass)=>{
   return new Promise(async(resolve, reject) => {
-    const PassEn = encrypt.encrypt(Pass);
+    const PassEn = await encrypt.encrypt(Pass);
     const query = `UPDATE usuario set pass='${PassEn}' where nombre_usuario='${Usuario}'`;
     con.query(query,(error, result) => {
       if (error) {
