@@ -514,3 +514,13 @@ tr:nth-child(even) {
   }
   .minimuy{
   }
+
+  .movers{
+    transform: translateY(2PX);
+    margin-right: 3px;
+  }
+
+  .disabled{
+    pointer-events: none;
+    filter: blur(2px) brightness(0.98);
+  }

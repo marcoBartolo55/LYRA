@@ -10,5 +10,6 @@ router.get('/EditarPerfil',PsicologoControllers.EditarDatos);
 router.post('/EditarPerfil', PsicologoControllers.EditarDatosPost);
 //Gonzalo
 router.post('/EditarPass', PsicologoControllers.EditarPass);
-
+//Roberto
+router.post('/Enlace', PsicologoControllers.EnlazarPaciente);
 module.exports= router;

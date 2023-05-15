@@ -32,7 +32,53 @@ db.buscarUsuario = (nombre_usuario) => {
     });
   });
 };
+
+//Roberto
+db.BuscarPacientes = (Paciente)=>{
+  return new Promise(async(resolve, reject)=>{
+    const query = `SELECT * FROM usuario WHERE nombre_usuario ='${Paciente}'`;
+    con.query(query,(error,result)=>{
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+//Roberto
+db.BuscarEnlaces = (Paciente)=>{
+  return new Promise(async(resolve, reject)=>{
+    const query = `SELECT * FROM psicologo_paciente where nombre_Paciente ='${Paciente}'`;
+    con.query(query,(error,result)=>{
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+//Roberto
+db.DesplegarPacientes = (Doctor)=>{
+  return new Promise(async(resolve, reject) =>{
+    const query = `SELECT * FROM vista_pacientes_doctor where nombre_Doctor = '${Doctor}'`;
+    con.query(query,(error,result)=>{
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  })
+};
 // Inserción de datos
+
 // Marcos 
 db.RegistrarUsuarios = (nombre, apellido, edad, sexo, correo_electronico, nombre_usuario, pass, id_tipo_usuario) => {
   return new Promise(async(resolve, reject) => {
@@ -49,7 +95,24 @@ db.RegistrarUsuarios = (nombre, apellido, edad, sexo, correo_electronico, nombre
     });
   });
 };
+
+//Roberto
+db.EnlzarPsicoDoc = (Paciente,Psicologo)=>{
+  return new Promise(async(resolve, reject) => {
+    const query = `INSERT INTO psicologo_paciente values(default,'${Paciente}','${Psicologo}')`;
+    con.query(query,(error,result)=>{
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  })
+};
+
 // Modificación de datos
+
 // Gonzalo
 db.ActualizardatosDoctor = (Id_Usuario,Nombre,Apellido,Edad,Sexo,Correo)=>{
   return new Promise(async(resolve, reject)=>{
@@ -65,6 +128,7 @@ db.ActualizardatosDoctor = (Id_Usuario,Nombre,Apellido,Edad,Sexo,Correo)=>{
     });
   });
 };
+
 //Gonzalo
 db.ActualizarPassDoctor = (Usuario,Pass)=>{
   return new Promise(async(resolve, reject) => {
