@@ -631,3 +631,8 @@ footer .text span a:hover{
     font-size: 14px;
     line-height: 1.5;
   }
+
+  .espacio{
+    padding-left: 10px;
+    padding-right: 10px;
+  }

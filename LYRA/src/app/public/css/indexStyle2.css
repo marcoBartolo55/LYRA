@@ -553,3 +553,7 @@ footer .text span a:hover{
     background-color: #8c4eff;
     
   }
+.dos{
+  display: inline-block;
+  width: auto;
+}
