@@ -42,19 +42,22 @@
                 <div class="row">
                     <div class="column col1">
                 <h2 class="TextInfo">Editar perfil.</h2>
-                <form method="post" action="">
-                    <div class="input-container magTop">
+                <form method="post" action="" id="formularioEditarPerfil">
+                    <div class="input-container magTop" id="grupo_nombre">
                         <h4 class="infoLabel">Nombre</h4>
                         <input type="text" name="Nombre" value="<%=datosUsuario[0].nombre%>" placeholder="Escribe tu nombre"  class="inputTypes">
+                        <p class="form_input_error"><br>El o los nombres deben contener minimo dos letras</p>
                     </div>
-                    <div class="input-container magTop magboTom">
+                    <div class="input-container magTop magboTom" id="grupo_apellidos">
                         <h4 class="infoLabel">Apellidos</h4>
                         <input type="text" name="Apellidos" value="<%=datosUsuario[0].apellido%>" placeholder="Escribe tus apellidos"  class="inputTypes">
+                        <p class="form_input_error"><br>Los apellidos deberán tener como mínimo dos letras<br></p>
                     </div>
                     <div class="conteneEdadSexo">
-                        <div class="input-container magTop mitades">
+                        <div class="input-container magTop mitades" id="grupo_edad">
                             <h4 class="infoLabel">Edad</h4>
                             <input type="number" name="Edad" value="<%=datosUsuario[0].edad%>" placeholder="0 - 100"  class="inputTypes">
+                            <p class="form_input_error"><br>Introduzca una edad válida</p>
                         </div>
                         <%if(datosUsuario[0].sexo==='Femenino'){%>
                         <div class="input-container magTop mitades marginLeft">
@@ -74,17 +77,19 @@
                         </div>
                         <%}%>
                     </div>
-                    <div class="input-container magTop">
+                    <div class="input-container magTop" id="grupo_email">
                         <h4 class="infoLabel">Correo electrónico</h4>
                         <input type="email" name="Correo" value="<%=datosUsuario[0].correo_electronico%>" placeholder="Ejemplo@mail.com"   class="inputTypes">
+                        <p class="form_input_error"><br>Introduzca un correo válido</p>
                     </div>    
                     <button type="submit" class="SubmitBtn">Actualizar Perfil</button>
                 </form>
 
-                <form method="post" action="">
-                  <div class="input-container magTop">
+                <form method="post" action="" id="formularioEditarPassword">
+                  <div class="input-container magTop" id="grupo_password">
                     <h4 class="infoLabel">Contraseña</h4>
                     <input type="password" name="Pass" placeholder="Escribe tu contraseña" required="" class="inputTypes">
+                    <p class="form_input_error"><br>La contraseña debe cumplir con 1 mayúscula, 1 número, 1 caracter especial, 8 carácteres totales</p>
                 </div>
                 <button type="submit" class="SubmitBtn">Actualizar contraseña</button>
                 </form>
@@ -100,6 +105,10 @@
                   </div>   
             </div>
         </div>
+
+        <script src="/js/editarDatosPsico.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
         <%if(typeof alerta !== 'undefined'){%>
           <script src="/js/Alertas.js"></script>
           <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -121,9 +130,11 @@
             </script>
           <%}%>
         <%}%>
+
     </body>
     </section>
     </html>
+
   <%}else{%>
     <!DOCTYPE html>
     <html>

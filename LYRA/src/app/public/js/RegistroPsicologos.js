@@ -1,5 +1,5 @@
-const formularioRegistroPaciente = document.getElementById('formularioRegistroPaciente');
-const inputs = document.querySelectorAll('#formularioRegistroPaciente input');
+const formularioRegistroPsicologo = document.getElementById('formularioRegistroPsicologo');
+const inputs = document.querySelectorAll('#formularioRegistroPsicologo input');
 const generoSelect = document.querySelector('select[name="Sexo"]')
 
 var genero = document.getElementsByName("Sexo")[0]
@@ -8,7 +8,7 @@ const expReg = {
     nombre: /^[A-ZÁÉÍÓÚÜÑ][a-záéíóúüñÑ']+(\s+[A-ZÁÉÍÓÚÜÑ][a-záéíóúüñÑ']+)*$/,
     apellidos: /^[A-ZÁÉÍÓÚÜÑ][a-záéíóúüñÑ']+(\s+[A-ZÁÉÍÓÚÜÑ][a-záéíóúüñÑ']+)?(\s+[A-ZÁÉÍÓÚÜÑ][a-záéíóúüñÑ']+)$/,
     email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-    edad: /^(?:[5-9]|[1-9][0-9])$/,
+    edad: /^([1-9][8-9]|[2-9][0-9])$/,
     nombreUsuario: /^[a-zA-Z0-9_]{4,20}$/,
     password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&.#])[A-Za-z\d$@$!%*?&.#]{8,35}$/
 }
@@ -158,7 +158,7 @@ generoSelect.addEventListener('change', actualizarErrorgenero);
     input.addEventListener("blur", validarFormulario);
   });
   
-  formularioRegistroPaciente.addEventListener("submit", (e) => {
+  formularioRegistroPsicologo.addEventListener("submit", (e) => {
     if (
       campos.nombre &&
       campos.apellidos &&
@@ -179,61 +179,4 @@ generoSelect.addEventListener('change', actualizarErrorgenero);
     }
   });
 
-  var swiper = new Swiper(".slide-container", {
-    slidesPerView: 4,
-    spaceBetween: 20,
-    sliderPerGroup: 4,
-    loop: true,
-    centerSlide: "true",
-    fade: "true",
-    grabCursor: "true",
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-      dynamicBullets: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
   
-    breakpoints: {
-      0: {
-        slidesPerView: 1,
-      },
-      520: {
-        slidesPerView: 2,
-      },
-      768: {
-        slidesPerView: 3,
-      },
-      1000: {
-        slidesPerView: 4,
-      },
-    },
-  });
-  
-  
-  
-  const agendaCitaBtn = document.querySelector('.agendaCita');
-  const formCitaDiv = document.querySelector('.formcita');
-  const accionesPac2Div = document.querySelector('.AccionesPac2');
-  
-  let formCitaVisible = false;
-  
-  agendaCitaBtn.addEventListener('click', () => {
-    if (!formCitaVisible) {
-      formCitaDiv.style.display = 'flex';
-      accionesPac2Div.style.marginTop = '50px';
-      formCitaVisible = true;
-    } else {
-      formCitaDiv.style.display = 'none';
-      accionesPac2Div.style.marginTop = '0px';
-      formCitaVisible = false;
-    }
-  });
-  
-  
-  agendaCitaBtn.addEventListener('click', () => {
-    formCitaDiv.classList.toggle('mostrar');
-  });

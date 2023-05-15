@@ -461,3 +461,12 @@ background-color: #c4b0ec38 ;
 .big{
   transform: translate(0px);
 }
+
+.form_input_error{
+  display: none;
+}
+
+.form_input_error-activo{
+  color: red;
+  display: block;
+}

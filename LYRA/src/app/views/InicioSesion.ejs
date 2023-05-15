@@ -55,14 +55,16 @@
             <div class="Circlelogo"></div>
             <h2 class="TextInfo">Inicio de sesión</h2>
             <h3 class="DescriptionInfo">Inicia sesión en <a class="Redirect">LYRA</a></h3>
-            <form action="" method="post">
-                <div class="input-container magTop">
+            <form action="" method="post" id="formulario">
+                <div class="input-container magTop" id="grupo_nomUsu">
                     <input type="text" name="Usuario"  class="inputTypes">
                     <label class="MyPlaceholder">Escribe tu nombre de usuario...</label>
+                    <p class="form_input_error">El nombre de usuario no debe contener carácteres especiales como $""%&()=?/.-etc; ni ser menor a 4 ni mayor a 16</p>
                 </div>
-                <div class="input-container">
+                <div class="input-container" id="grupo_pass">
                     <input type="password" name="Pass" class="inputTypes">
                     <label class="MyPlaceholder">Contraseña</label>
+                    <p class="form_input_error">La contraseña debe cumplir con 1 mayúscula, 1 número, 1 caracter especial, 8 carácteres totales</p>
                 </div>
                 <button type="submit" class="SubmitBtn">Inicia sesión</button>
             </form>
@@ -70,6 +72,10 @@
     </div>
     <br>
 </section>
+
+<script src="/js/inicioSesion.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <% if (typeof alerta !== 'undefined') { %>
   <script src="/js/Alertas.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

@@ -58,43 +58,50 @@
                 <div class="column col1">
             <h2 class="TextInfo">Regístrate como psicólogo en Lyra.</h2>
             <h5 class="miniInfo">Crea una cuenta ahora mismo</h5>
-            <form method="post" action="/RegistroPsicologos">
+            <form method="post" action="/RegistroPsicologos" id="formularioRegistroPsicologo">
               
-                <div class="input-container magTop">
+                <div class="input-container magTop" id="grupo_nombre">
                     <h4 class="infoLabel">Nombre</h4>
                     <input type="text" name="Nombre" placeholder="Escribe tu nombre"  class="inputTypes">
+                    <p class="form_input_error"><br>El o los nombres deben contener minimo dos letras</p>
                 </div>
-                <div class="input-container magTop magboTom">
+                <div class="input-container magTop magboTom" id="grupo_apellidos">
                     <h4 class="infoLabel">Apellidos</h4>
                     <input type="text" name="Apellidos" placeholder="Escribe tus apellidos"  class="inputTypes">
+                    <p class="form_input_error"><br>Los apellidos deberán tener como mínimo dos letras<br></p>
                 </div>
                 <div class="conteneEdadSexo">
-                    <div class="input-container magTop mitades">
+                    <div class="input-container magTop mitades" id="grupo_edad">
                         <h4 class="infoLabel">Edad</h4>
                         <input type="number" name="Edad" placeholder="0 - 100"  class="inputTypes">
+                        <p class="form_input_error"><br>Introduzca una edad válida</p>
                     </div>
-                    <div class="input-container magTop mitades marginLeft">
+                    <div class="input-container magTop mitades marginLeft" id="grupo_genero">
                         <h4 class="infoLabel">Sexo</h4>
                         <select class="inputTypes2 selectB" name="Sexo">
-                            <option value="Femenino">Selecciona</option>
+                            <option value="">Selecciona</option>
                             <option value="Femenino">Femenino</option>
                             <option value="Masculino">Masculino</option>
                         </select>
+                        <p class="form_input_error"><br>Seleccione su sexo</p>
                     </div>
                 </div>
-                <div class="input-container magTop">
+                <div class="input-container magTop" id="grupo_nomUsuario">
                     <h4 class="infoLabel">Nombre de usuario</h4>
                     <input type="text" name="Usuario" placeholder="Escribe tu usuario personalizado..."  class="inputTypes">
+                    <p class="form_input_error"><br>Su nombre de usuario no debe contener carácteres especiales como $""%&()=?/.-etc; ni ser menor a 4 ni mayor a 16</p>
                 </div>
-                <div class="input-container magTop">
+                <div class="input-container magTop" id="grupo_email">
                     <h4 class="infoLabel">Correo electrónico</h4>
                     <input type="email" name="Correo" placeholder="Ejemplo@mail.com"  class="inputTypes">
+                    <p class="form_input_error"><br>Introduzca un correo válido</p>
                 </div>
-                <div class="input-container magTop">
+                <div class="input-container magTop" id="grupo_password">
                     <h4 class="infoLabel">Contraseña</h4>
                     <input type="password" name="Pass" placeholder="Escribe tu contraseña"  class="inputTypes">
+                    <p class="form_input_error"><br>La contraseña debe cumplir con 1 mayúscula, 1 número, 1 caracter especial, 8 carácteres totales</p>
                 </div>    
-                <button type="submit" class="SubmitBtn">Registrate </button>
+                <button type="submit" class="SubmitBtn" id="grupo_enviar">Registrate </button>
                 <h3 class="DescriptionInfoBottom">¿Ya tienes una cuenta? <a href="/InicioSesion" class="Redirect">inicia sesión</a> </h3>
             </form>
                  
@@ -110,6 +117,10 @@
               </div>   
         </div>
     </div>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="/js/RegistroPsicologos.js"></script>
+
     <% if (typeof alerta !== 'undefined') { %>
       <script src="/js/Alertas.js"></script>
       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
