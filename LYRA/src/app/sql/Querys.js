@@ -22,7 +22,7 @@ const db = {};
 //Marcos
 db.buscarUsuario = (nombre_usuario) => {
   return new Promise((resolve, reject) => {
-    con.query(`SELECT * FROM usuario where nombre_usuario = ?`, [nombre_usuario], (error, result) => {
+    con.query(`SELECT * FROM usuario NATURAL JOIN persona where nombre_usuario = ?`, [nombre_usuario], (error, result) => {
       if (error) {
         console.error(error);
         reject(error);
@@ -50,6 +50,35 @@ db.RegistrarUsuarios = (nombre, apellido, edad, sexo, correo_electronico, nombre
   });
 };
 // Modificación de datos
+// Gonzalo
+db.ActualizardatosDoctor = (Id_Usuario,Nombre,Apellido,Edad,Sexo,Correo)=>{
+  return new Promise(async(resolve, reject)=>{
+    const query = `CALL actualizar_persona_usuario(?, ?, ?, ?, ?, ?, ?)`;
+    const values = [Id_Usuario,Nombre,Apellido,Edad,Sexo,Correo,1];
+    con.query(query, values, (error,result)=>{
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+//Gonzalo
+db.ActualizarPassDoctor = (Usuario,Pass)=>{
+  return new Promise(async(resolve, reject) => {
+    const PassEn = encrypt.encrypt(Pass);
+    const query = `UPDATE usuario set pass='${PassEn}' where nombre_usuario='${Usuario}'`;
+    con.query(query,(error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
 // Eliminación de datos
-//Exportar querys 
-module.exports =db;
+module.exports = db;

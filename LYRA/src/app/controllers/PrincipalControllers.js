@@ -3,6 +3,7 @@ const querys = require('../sql/Querys');
 const Controllers={};
 //Get
 Controllers.IndexGet=(req,res,next)=>{
+    req.session.destroy();
     res.render('Index');
 };
 //Marco
@@ -73,7 +74,7 @@ Controllers.InicioSesionPost = async (req, res, next) => {
 
       switch (idTipoUsuario) {
         case 1:
-          // Código para usuario de tipo 1
+          res.redirect('/Psicologo');
           break;
         case 2:
           // Código para usuario de tipo 2
