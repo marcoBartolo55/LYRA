@@ -29,3 +29,5 @@ app.use('/Paciente',Paciente);
 app.use('/Psicologo',Psicologo);
 app.use('/Soporte',Soporte);
 module.exports = app;
+
+// namas para tener cambios de entradas
