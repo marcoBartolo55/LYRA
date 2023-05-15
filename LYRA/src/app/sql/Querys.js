@@ -77,6 +77,34 @@ db.DesplegarPacientes = (Doctor)=>{
     });
   })
 };
+
+db.InfoPacientes = (Paciente)=>{
+  return new Promise(async(resolve, reject) =>{
+    const query = `SELECT * FROM datospaciente where nombre_usuario = '${Paciente}'`;
+    con.query(query,(error,result)=>{
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  })
+};
+
+db.BuscarResumenes=(Paciente)=>{
+  return new Promise(async(resolve, reject) =>{
+    const query = `SELECT * FROM resumen_conversacion NATURAL JOIN psicologo_paciente where nombre_Paciente ='${Paciente}'`;
+    con.query(query,(error,result)=>{
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  })
+};
 // Inserción de datos
 
 // Marcos 
@@ -110,6 +138,8 @@ db.EnlzarPsicoDoc = (Paciente,Psicologo)=>{
     });
   })
 };
+
+
 
 // Modificación de datos
 

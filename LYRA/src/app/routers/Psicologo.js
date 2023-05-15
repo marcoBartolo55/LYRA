@@ -12,4 +12,6 @@ router.post('/EditarPerfil', PsicologoControllers.EditarDatosPost);
 router.post('/EditarPass', PsicologoControllers.EditarPass);
 //Roberto
 router.post('/Enlace', PsicologoControllers.EnlazarPaciente);
+
+router.post('/Resumenes',PsicologoControllers.Resumenes);
 module.exports= router;
