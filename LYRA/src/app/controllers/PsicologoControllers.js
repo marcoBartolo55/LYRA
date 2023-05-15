@@ -73,7 +73,6 @@ Controllers.EditarPass = async(req,res,next) =>{
 Controllers.EnlazarPaciente=(req,res,next)=>{
   const Usuario = req.session.usuario;
   const {Paciente} = req.body;
-  console.log(Paciente);
   querys.BuscarPacientes(Paciente)
   .then(result => {
     if(result.length>0&&result[0].id_tipo_usuario===2){
