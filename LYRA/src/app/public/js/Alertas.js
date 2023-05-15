@@ -38,6 +38,24 @@ function UsuarioRegistradoAnteriormente(e){
       window.location.href='/InicioSesion';
     });
   };
+
+    //Roberto
+  function PacienNoRegis(e){
+    swal({
+        icon:'error',
+        title: '¡Error!',
+        text: "El paciente que intenta enlazar no se encuentra registrado en el sistema.",
+    });
+  };
+
+    //Roberto
+    function EnlaceAnterior(e){
+      swal({
+          icon:'error',
+          title: '¡Error!',
+          text: "El paciente que intenta enlazar ya está asociado con otro psicólogo.",
+      });
+    };
   
   //Gonzalo
   function DatosNoActulizados(e){
@@ -64,6 +82,7 @@ function UsuarioRegistradoAnteriormente(e){
         text: "Ocurrió un error con el servidor al realizar esta acción, por favor inténtelo más tarde.",
     })
   };
+
   //Alertas acciones completadas
   //Marco
   function UsuarioRegistrado(e){
@@ -91,5 +110,14 @@ function UsuarioRegistradoAnteriormente(e){
         icon:'success',
         title: '¡Éxito!',
         text: "Contraseña actualizada.",
+    });
+  };
+
+  //Roberto
+  function EnlaceCom(e){
+    swal({
+        icon:'success',
+        title: '¡Éxito!',
+        text: "Ha sido enlazado al paciente.",
     });
   };

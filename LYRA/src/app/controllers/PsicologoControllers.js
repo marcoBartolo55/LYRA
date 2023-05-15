@@ -14,12 +14,6 @@ function formatearFechaHora(fecha) {
   return formatoFechaHora;
 }
 
-// Ejemplo de uso:
-const fechaOriginal = 'Mon May 15 2023 14:30:00 GMT-0600 (hora estándar central)';
-const fechaFormateada = formatearFechaHora(fechaOriginal);
-
-console.log(fechaFormateada); // Salida: "15/05/2023 14:30"
-
 Controllers.Principal = async(req,res,next)=>{
   const Usuario = req.session.usuario;
   const TipoUsu = req.session.tipo_usuario;
