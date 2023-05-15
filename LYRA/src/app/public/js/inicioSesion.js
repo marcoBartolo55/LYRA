@@ -3,7 +3,7 @@ const inputs = document.querySelectorAll('#formulario input');
 
 const expReg = {
     nomUsu: /^[a-zA-Z0-9_]{4,20}$/,
-    password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&.#])[A-Za-z\d$@$!%*?&.#]{8,35}$/
+    password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!"#$%&'()+,-./:;<=>?@^_`{|}~])[A-Za-z\dÑñ!"#$%&'()+,-./:;<=>?@\[\]^_`{|}~]{8,35}$/
 }
 
 const campos = {
