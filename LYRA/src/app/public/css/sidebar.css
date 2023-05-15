@@ -11,7 +11,7 @@
     /* ===== Colors ===== */
     --body-color: #1e43a800;
     --sidebar-color: #ffffffa8;
-    --primary-color:  rgba(147, 53, 223, 0.527);
+    --primary-color:  rgba(139, 41, 231, 0.692);
     --primary-color-light: #f0f0f0;
     --toggle-color: #dddddd;
     --text-color: #707070;
@@ -313,3 +313,11 @@ body.dark .switch::before{
 body.dark .home .text{
     color: var(--text-color);
 }
+.mini{
+    display: inline-block;
+    font-size: 197x !important;
+}
+.nav-link {
+    word-break: break-all !important;
+
+  }

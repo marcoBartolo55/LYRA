@@ -314,7 +314,8 @@ background-color: #d2e3ea79 ;
 }
 
 .login-container{
-  transform: translateY(90px) scale(1);
+  transform:scale(1);
+  margin-top: 60px;
 }
 
 .login-box{
@@ -343,7 +344,7 @@ background-color: #d2e3ea79 ;
   width: 7vh;
   height: 7vh;
   border-radius: 50%;
-  background-color: #c2acf0;
+  background-color: #acccf0;
   color: #fff;
   display: flex;
   justify-content: center;
@@ -361,7 +362,8 @@ background-color: #d2e3ea79 ;
   width: 7vh;
   height: 7vh;
   border-radius: 50%;
-  background-color: #eaacf0;
+  background-color: #acf0c0;
+
   color: #fff;
   display: flex;
   justify-content: center;
