@@ -7,7 +7,7 @@ router.get('/', PsicologoControllers.Principal);
 router.get('/EditarPerfil',PsicologoControllers.EditarDatos);
 //Post
 //Gonzalo
-router.post('/EditarPerfil', PsicologoControllers.EditarDatosPost);
+router.post('/EditarPerfil', PsicologoControllers.EditarDatosPsicologoPost);
 //Gonzalo
 router.post('/EditarPass', PsicologoControllers.EditarPass);
 //Roberto

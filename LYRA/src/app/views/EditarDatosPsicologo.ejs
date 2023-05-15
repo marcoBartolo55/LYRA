@@ -25,8 +25,8 @@
     <body>
 
         <a class="floating-button" href="/Psicologo">
-            <i class="fa fa-pencil "></i>
-            <span class="button-text">Regresar a pacientes</span>
+            <i class="fa fa-arrow-circle-right"></i>
+            <span class="button-text">Regresar</span>
         </a>
         <a class=" floating-button2" href="/">
             <i class="fa fa-close "></i>
@@ -84,21 +84,23 @@
                 <form method="post" action="/Psicologo/EditarPass">
                   <div class="input-container magTop">
                     <h4 class="infoLabel">Contraseña</h4>
-                    <input type="password" name="Pass" placeholder="Escribe tu contraseña" required="" class="inputTypes">
+                    <input type="password" name="Pass" placeholder="Escribe tu nueva contraseña" required="" class="inputTypes">
                 </div>
                 <button type="submit" class="SubmitBtn">Actualizar contraseña</button>
+                                    <h3 class="DescriptionInfoBottom">Modifica tus datos de manera<a href="" class="Redirect"> sencilla :)</a> </h3>
                 </form>
                     
                     </div>
-                    <div class="column col2">
+
+                    <div class="column col2 colesmuy">
                         <div class="coles">
                             <div class="Circlelogo"></div>
                             <div class="LogoName">Lyra</div>
-                            <div class="cuadrodatos">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam aliquam obcaecati suscipit expedita voluptatibus iure vitae quo necessitatibus, earum fugiat!</div>
+                            <div class="LogoName2">Cambia tus datos personales</div>
                         </div>
-                    </div>
-                  </div>   
+                    </div>   
             </div>
+        </div>
         </div>
         <%if(typeof alerta !== 'undefined'){%>
           <script src="/js/Alertas.js"></script>

@@ -1,0 +1,105 @@
+<%if(typeof Usuario !== 'undefined'){%>
+  <%if(typeof TipoUsu !== 'undefined' && TipoUsu === 2){%>
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Chat</title>
+        <link rel="stylesheet" href="/css/chatLyra.css">
+        <link
+        rel="shortcut icon"
+        href="https://i.ibb.co/gFdWfc6/Whats-App-Image-2023-04-27-at-8-43-16-AM-1-modified.png"
+        type="image/svg"
+        />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+    </head>
+    <body>
+        <a href="/Paciente/EditarPerfil" class="floating-button">
+            <i class="fa fa-pencil icotamano"></i>
+            <span class="button-text">Editar información personal</span>
+        </a>
+        <br>
+        <a  href="/" class=" floating-button2">
+            <i class="fa fa-close icotamano"></i>
+            <span class="button-text">Salir</span>
+        </a>
+      <button  class="microphone-btn">
+        <i class="fa fa-microphone microicon"></i>
+      </button>
+        <div class="microphonemessage">Habla conmigo</div>
+    </body>
+
+
+    <script>
+    const microphoneBtn = document.querySelector(".microphone-btn");
+    const microphoneMessage = document.querySelector(".microphonemessage");
+    const cargando = 'cargandoB';
+    const error = 'errorB';
+    const respondiendo = 'respondiendoB';
+
+    microphoneBtn.addEventListener("click", () => {
+      if (microphoneBtn.classList.contains("animate")) {
+        // detener la animación del botón
+        microphoneBtn.classList.remove("animate");
+        microphoneMessage.textContent = "Habla conmigo"; // Agregar el texto "¡Habla conmigo!"
+      } else {
+      // iniciar la animación del botón
+        microphoneBtn.classList.add("animate");
+        microphoneMessage.textContent = "Escuchando..."; 
+      } 
+    });
+
+    if (cargando === 'cargando' && !microphoneBtn.classList.contains("animate")) {
+        microphoneBtn.classList.add("animate-circle");
+        microphoneBtn.innerHTML = '<i class="fa fa-circle-o-notch microicon2"></i>';
+        microphoneMessage.textContent = "Cargando..."; 
+      }
+
+    if (error === 'error' && !microphoneBtn.classList.contains("animate")) {
+        microphoneBtn.classList.add("animate2");
+        microphoneBtn.innerHTML = '<i class="fa fa-times microicon2"></i>';
+        microphoneMessage.textContent = "Ha ocurrido un error..."; 
+      }
+
+      if (respondiendo === 'respondiendo' && !microphoneBtn.classList.contains("animate")) {
+        microphoneBtn.classList.add("hablando");
+        microphoneBtn.innerHTML = '<i class="fa fa-ellipsis-h microicon2 dy"></i>';
+        microphoneMessage.textContent = "Hablando..."; 
+      }
+
+      
+
+
+
+    </script>
+    </html>
+  <%}else{%>
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Error - No tienes permisos</title>
+    </head>
+    <body>
+      <script src="/js/Alertas.js"></script>
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <script>
+        NoPermisos()
+      </script>
+    </body>
+    </html>
+  <%}%>
+<%}else{%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Error - Debes Iniciar Sesión</title>
+</head>
+<body>
+<script src="/js/Alertas.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+  SesionCaducada()
+</script>
+</body>
+</html>
+<%}%>

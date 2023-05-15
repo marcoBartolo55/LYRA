@@ -160,11 +160,27 @@ db.ActualizardatosDoctor = (Id_Usuario,Nombre,Apellido,Edad,Sexo,Correo)=>{
 };
 
 //Gonzalo
-db.ActualizarPassDoctor = (Usuario,Pass)=>{
+db.ActualizarPass = (Usuario,Pass)=>{
   return new Promise(async(resolve, reject) => {
     const PassEn = await encrypt.encrypt(Pass);
     const query = `UPDATE usuario set pass='${PassEn}' where nombre_usuario='${Usuario}'`;
     con.query(query,(error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+// Gonzalo
+db.ActualizardatosPaciente = (Id_Usuario,Nombre,Apellido,Edad,Sexo,Correo)=>{
+  return new Promise(async(resolve, reject)=>{
+    const query = `CALL actualizar_persona_usuario(?, ?, ?, ?, ?, ?, ?)`;
+    const values = [Id_Usuario,Nombre,Apellido,Edad,Sexo,Correo,2];
+    con.query(query, values, (error,result)=>{
       if (error) {
         console.error(error);
         reject(error);

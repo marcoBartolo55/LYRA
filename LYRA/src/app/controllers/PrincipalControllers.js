@@ -77,7 +77,7 @@ Controllers.InicioSesionPost = async (req, res, next) => {
           res.redirect('/Psicologo');
           break;
         case 2:
-          // Código para usuario de tipo 2
+          res.redirect('/Paciente');
           break;
         case 3:
           // Código para usuario de tipo 3

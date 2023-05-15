@@ -33,13 +33,13 @@ Controllers.EditarDatos = async(req,res,next)=>{
   const alerta = req.query.alerta;
   try{
   const datosUsuario =await querys.buscarUsuario(Usuario);
-  res.render('EditarDatosDoctor',{Usuario,TipoUsu,datosUsuario,alerta});
+  res.render('EditarDatosPsicologo',{Usuario,TipoUsu,datosUsuario,alerta});
   }catch(error){
     console.error(error);
   }
 };
 //Gonzalo
-Controllers.EditarDatosPost = async(req,res,next)=>{
+Controllers.EditarDatosPsicologoPost = async(req,res,next)=>{
   const {Nombre,Apellidos,Edad,Sexo,Correo} = req.body;
   const Usuario = req.session.usuario;
   try{
@@ -59,7 +59,7 @@ Controllers.EditarPass = async(req,res,next) =>{
   const Usuario = req.session.usuario;
   const{Pass} = req.body;
   try{
-    const PassActualizada = await querys.ActualizarPassDoctor(Usuario, Pass);
+    const PassActualizada = await querys.ActualizarPass(Usuario, Pass);
     if(PassActualizada){
       return res.redirect('/Psicologo/EditarPerfil?alerta=Pass Actualizada');
     }
