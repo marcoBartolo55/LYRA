@@ -177,3 +177,17 @@ form {
     background-color: #8c4eff;
     
   }
+
+  .form_input_error{
+    display: none;
+  }
+  
+  .form_input_error-activo{
+    color: red;
+    display: block;
+  }
+
+  .swal-text {
+    text-align: center;
+  }
+  
