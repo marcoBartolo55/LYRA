@@ -51,8 +51,9 @@ Controllers.PaginaPrincipalGerenteSoporte= async (req,res,next)=>{
   const alerta = req.query.alerta;
   try{
     const datosUsuario =await querys.buscarUsuario(Usuario);
-    const Reportes = await querys.BuscarReportesAbiertos();
-    res.render('PaginaPrincipalGerenteSoporte',{Usuario,TipoUsu,alerta,datosUsuario,Reportes,formatearFechaHora});
+    const ReportesAbiertos = await querys.BuscarReportesAbiertos();
+    const TodosReportes = await querys.Reportes();
+    res.render('PaginaPrincipalGerenteSoporte',{Usuario,TipoUsu,alerta,datosUsuario,ReportesAbiertos,TodosReportes,formatearFechaHora});
   }catch(error){
     console.log(error);
   }
@@ -71,7 +72,7 @@ Controllers.EditarDatos = async(req,res,next)=>{
   }
 };
 
-//Gonzalo
+//
 Controllers.EditarDatosPost = async(req,res,next)=>{
   const {Nombre,Apellidos,Edad,Sexo,Correo} = req.body;
   const Usuario = req.session.usuario;
@@ -87,7 +88,7 @@ Controllers.EditarDatosPost = async(req,res,next)=>{
     return res.redirect('/Soporte/EditarPerfil?alerta=Error');
   }
 };
-//Gonzalo
+//
 Controllers.EditarPass = async(req,res,next) =>{
   const Usuario = req.session.usuario;
   const{Pass} = req.body;
