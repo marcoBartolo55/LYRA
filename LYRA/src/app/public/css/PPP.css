@@ -151,6 +151,7 @@ body.dark li a:hover:before{
     padding: 20px;
     display: block ;
     overflow-y: auto;
+    margin-left: 80px;
 }
 
 .botonAcc{
@@ -522,5 +523,5 @@ tr:nth-child(even) {
 
   .disabled{
     pointer-events: none;
-    filter: blur(2px) brightness(0.98);
+    filter: blur(1.5px) brightness(0.99);
   }
