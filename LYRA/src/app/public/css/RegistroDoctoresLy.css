@@ -323,7 +323,7 @@ background-color: #d2e3ea79 ;
 }
 
 .avatar{
-  height: 770px;
+  height: 600px;
 }
 .avatar2{
   background-color: #00000007;
@@ -331,6 +331,7 @@ background-color: #d2e3ea79 ;
 
 .gris{
   background-color: #000000cb;
+ width: 100%;
 }
 
 
