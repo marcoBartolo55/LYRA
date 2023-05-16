@@ -43,11 +43,12 @@ Controllers.EditarPass = async(req,res,next) =>{
   const Usuario = req.session.usuario;
   const{Pass} = req.body;
   try{
-    const PassActualizada = await querys.EditarPass(Usuario, Pass);
+    const PassActualizada = await querys.ActualizarPassDoctor(Usuario, Pass);
     if(PassActualizada){
       return res.redirect('/Psicologo/EditarPerfil?alerta=Pass Actualizada');
     }
   }catch(error){
+    console.error(error);
     return res.redirect('/Psicologo/EditarPerfil?alerta=Error Pass');
   }
 };
