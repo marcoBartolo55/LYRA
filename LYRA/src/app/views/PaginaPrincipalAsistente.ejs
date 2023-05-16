@@ -1,0 +1,158 @@
+<%if(typeof Usuario !== 'undefined'){%>
+  <%if(typeof TipoUsu !== 'undefined' && TipoUsu === 7|| typeof TipoUsu !== 'undefined' && TipoUsu === 3){%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link
+    rel="shortcut icon"
+    href="https://i.ibb.co/gFdWfc6/Whats-App-Image-2023-04-27-at-8-43-16-AM-1-modified.png"
+    type="image/svg"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/pacientesLyra.css">
+    <link rel="stylesheet" href="/css/PPP.css">
+
+</head>
+<body>
+    <body>
+        <!--La barra-->
+            <%if(TipoUsu === 7){%>
+            <iframe id="sidebar-frame" src="/html/sidebar.html" class="frame disabled" frameborder="0" scrolling="no"></iframe>
+            <%}else if(TipoUsu === 3){%>
+              <iframe id="sidebar-frame" src="/html/sidebar.html" class="frame" frameborder="0" scrolling="no"></iframe>
+            <%}%>
+        <!--La barra-->
+        <div class="containerP">
+            <h2>Bienvenido: <%=datosUsuario[0].nombre%> <%=datosUsuario[0].apellido%></h2>
+            <%if(TipoUsu === 7){%>
+            <h6>Puesto de asistente</h6>
+            <%}else if(TipoUsu === 3){%>
+              <h6>Puesto de gerente de mantenimiento</h6>
+            <%}%>
+            <a href="#1" class="botonAcc color1">
+                <i class='bx bx-plus movers'></i>Generar reporte
+            </a>
+            <a href="#2" class="botonAcc color1">
+                <i class='bx bx-bell movers'></i>Ver reportes
+            </a>
+            <%if(typeof PacyDoc !== undefined && PacyDoc.length >0 && typeof GerenteSop !== undefined && GerenteSop.length >0){%>
+            <form action="/Soporte/Asistente/AgregarReporte" method="post" id="1">
+                <div class="form">
+                    <h4 class="titulo2">Agregar reporte</h4>
+                    <h6 class="tituloform">Usuario solicitante</h6>
+                    <select name="Solicitante" class="input selects">
+                      <%for(let i =0;i<PacyDoc.length;i++){%>
+                        <option value="<%=PacyDoc[i].nombre_usuario%>"><%=PacyDoc[i].nombre_usuario%></option>
+                      <%}%>
+                    </select>
+                    <h6 class="tituloform">Gerente asignado</h6>
+                    <select name="Gerente" class="input selects">
+                      <%for(let i =0;i<GerenteSop.length;i++){%>
+                        <option value="<%=GerenteSop[i].nombre_usuario%>"><%=GerenteSop[i].nombre_usuario%></option>
+                      <%}%>
+                    </select>
+                    <h6 class="tituloform">Descripción del reporte</h6>
+                    <input type="text" class="input" name="Descripcion" placeholder="Escribe la descripción del reporte">
+                    <button type="submit" class="submit">
+                        <i class='bx bx-plus'></i>Agregar
+                    </button>
+                </div>
+            </form>
+            <%}%>
+            <div class="contenedorreporte" id="2">
+                <h4 class="titulo">
+                    <i class='bx bx-bell mov bro'></i>Reportes totales
+                </h4>
+                <table>
+                    <thead class="titulosIndiv">
+                        <tr>
+                            <th class="colm">Folio</th>
+                            <th>Usuario <h6>solicitante</h6></th>
+                            <th>Gerente <h6>soporte</h6> </th>
+                            <th>Estatus <h6>aceptado</h6></th>
+                            <th class="colg">Descripción</th>
+                            <th>Fecha <h6>de envío</h6></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <%if(typeof Reportes !== 'undefined' && Reportes.length>0){%>
+                        <%for(let i = 0; i<Reportes.length;i++){%>
+                        <tr>
+                            <td data-label="Folio">
+                                <b><%=Reportes[i].id_reporte%></b>
+                            </td>
+                            <td data-label="Usuario">
+                              <%=Reportes[i].id_usuario_solicita%>
+                            </td>
+                            <td data-label="Gerente">
+                              <%=Reportes[i].id_usuario_asignado%>
+                            </td>
+                            <td data-label="Estatus">
+                                <div class="estatus"><%=Reportes[i].descripcion_estatus%></div>
+                            </td>
+                            <td data-label="Descripción">
+                                <div class="descrip"><%=Reportes[i].descripcion_reporte%></div>
+                            </td>
+                            <td data-label="Fecha">
+                                <div class="descrip"><%=formatearFechaHora(Reportes[i].fecha_hora)%></div>
+                            </td>
+                        </tr>
+                        <%}%>
+                      <%}%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <script src="/js/PPP.js"></script>
+    <%if(typeof alerta !== 'undefined'){%>
+      <script src="/js/Alertas.js"></script>
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <%if(alerta === 'ReporteAgregado'){%>
+        <script>
+          ReporteAgregado()
+        </script>
+      <%}else if(alerta === 'Error'){%>
+        <script>
+          ErrorServidor()
+        </script>
+      <%}%>
+    <%}%>
+    </body>
+</body>
+</html>
+ <%}else{%>
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Error - No tienes permisos</title>
+    </head>
+    <body>
+      <script src="/js/Alertas.js"></script>
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <script>
+        NoPermisos()
+      </script>
+    </body>
+    </html>
+  <%}%>
+<%}else{%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Error - Debes Iniciar Sesión</title>
+</head>
+<body>
+<script src="/js/Alertas.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+  SesionCaducada()
+</script>
+</body>
+</html>
+<%}%>

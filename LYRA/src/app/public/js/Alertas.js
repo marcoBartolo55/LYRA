@@ -105,6 +105,15 @@ function UsuarioRegistradoAnteriormente(e){
   };
   
   //Gonzalo
+  function ReporteAgregado(e){
+    swal({
+        icon:'success',
+        title: '¡Éxito!',
+        text: "¡Reporte enviado!",
+    });
+  };
+
+  //Gonzalo
   function PassActulizada(e){
     swal({
         icon:'success',
