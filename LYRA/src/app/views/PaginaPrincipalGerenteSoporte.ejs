@@ -128,7 +128,7 @@
             <a href="#3" class="botonAcc color1">
                 <i class='bx bx-album movers'></i> Reportes totales
             </a>
-            <%if(typeof Reportes !== 'undefined' && Reportes.length>0){%>
+            <%if(typeof ReportesAbiertos !== 'undefined' && ReportesAbiertos.length>0){%>
             <div class="contenedorreporte" id="1">
                 <h4 class="titulo">
                     <i class='bx bx-bell mov bro'></i>Reportes generados por el asistente de soporte
@@ -147,38 +147,38 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <%for(let i = 0; i<Reportes.length;i++){%>
+                        <%for(let i = 0; i<ReportesAbiertos.length;i++){%>
                         <form action="" method="post">
                             <tr>
                                 <td data-label="Folio">
-                                    <b><%=Reportes[i].id_reporte%></b>
-                                    <input type="hidden" value="<%=Reportes[i].id_reporte%>" placeholder="folio reporte">
+                                    <b><%=ReportesAbiertos[i].id_reporte%></b>
+                                    <input type="hidden" value="<%=ReportesAbiertos[i].id_reporte%>" placeholder="folio reporte">
                                 </td>
                                 <td data-label="Usuario">
-                                    <%=Reportes[i].id_usuario_solicita%>
+                                    <%=ReportesAbiertos[i].id_usuario_solicita%>
                                 </td>
                                 <td data-label="Gerente">
-                                    <%=Reportes[i].id_usuario_manipulo_Reporte%>
+                                    <%=ReportesAbiertos[i].id_usuario_manipulo_Reporte%>
                                 </td>
                                 <td data-label="Asignar a">
                                     <select class="estatus estatusForm" name="" id="">
-                                        <option value=""><%=Reportes[i].descripcion_estatus%></option>
+                                        <option value=""><%=ReportesAbiertos[i].descripcion_estatus%></option>
                                         <option value="">Nadie</option>
                                         <option value="">id y nombre de usuario</option>
                                     </select>
                                 </td>
                                 <td data-label="Estatus">
                                     <select class="estatus estatusForm" name="" id="">
-                                        <option value=""><%=Reportes[i].descripcion_estatus%></option>
+                                        <option value=""><%=ReportesAbiertos[i].descripcion_estatus%></option>
                                         <option value="">En proceso</option>
                                         <option value="">En mantenimiento</option>
                                     </select>
                                 </td>
                                 <td data-label="Descripción">
-                                    <div class="descrip"><%=Reportes[i].descripcion_reporte%></div>
+                                    <div class="descrip"><%=ReportesAbiertos[i].descripcion_reporte%></div>
                                 </td>
                                 <td data-label="Fecha">
-                                    <div class="descrip"><%=formatearFechaHora(Reportes[i].fecha_hora)%></div>
+                                    <div class="descrip"><%=formatearFechaHora(ReportesAbiertos[i].fecha_hora)%></div>
                                 </td>
                                 <td data-label="Editar" class="center">
                                     <button type="submit" class="accion"><i class='bx bx-paper-plane mov'></i></button>
@@ -250,6 +250,7 @@
                     </tbody>
                 </table>
             </div>
+            <%if(typeof TodosReportes !== 'undefined' && TodosReportes.length>0){%>
             <div class="contenedorreporte" id="3">
                 <h4 class="titulo">
                     <i class='bx bx-album mov bro'></i>Reportes totales
@@ -267,33 +268,35 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <%for(let i = 0; i<TodosReportes.length;i++){%>
                         <tr>
                             <td data-label="Id">
-                                <b>1</b>
+                                <b><%=TodosReportes[i].id_reporte%></b>
                             </td>
                             <td data-label="Usuario">
-                                Usuario
+                                <%=TodosReportes[i].id_usuario_solicita%>
                             </td>
                             <td data-label="Enviado">
-                                Persona
+                                <%=TodosReportes[i].id_usuario_manipulo_Reporte%>
                             </td>
                             <td data-label="Estatus">
-                                <div class="estatus">Estatus</div>
+                                <div class="estatus"><%=TodosReportes[i].descripcion_estatus%></div>
                             </td>
                             <td data-label="Descripción">
-                                <div class="descrip">ayuda dios por favor</div>
+                                <div class="descrip"><%=TodosReportes[i].descripcion_reporte%></div>
                             </td>
                             <td data-label="Solución">
-                                <div class="descrip">ayuda dios por favor</div>
+                                <div class="descrip"><%=TodosReportes[i].solucion_reporte%></div>
                             </td>
                             <td data-label="Fecha">
-                                dd/mm/aaaa
+                                <%=formatearFechaHora(TodosReportes[i].fecha_hora)%>
                             </td>
                         </tr>
-                       
+                       <%}%>
                     </tbody>
                 </table>
             </div>
+            <%}%>
         </div>
     <script src="/js/sidebar.js"></script>
 </body>
