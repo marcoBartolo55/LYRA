@@ -85,9 +85,6 @@ const fechaHoraActual = new Date();
 // Formatear la fecha y hora en el formato deseado para MySQL (datetime: 'YYYY-MM-DD HH:MM:SS')
 const fechaHoraFormateada = fechaHoraActual.toISOString().slice(0, 19).replace('T', ' ');
 
-// Imprimir la fecha y hora formateada
-console.log(fechaHoraFormateada);
-
     const query = `INSERT INTO reporte VALUES 
     (default,'${Id_UsarioSolici}','${Id_Manupulo}','${Id_GerenteSo}',1,'${fechaHoraFormateada}','${Descripcion}','')`;
     con.query(query,(error,result)=>{

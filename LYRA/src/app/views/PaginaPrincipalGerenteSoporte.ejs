@@ -96,7 +96,7 @@
             </div>
             <div class="bottom-content">
                 <li class="">
-                    <a href="#">
+                    <a href="/">
                         <i class='bx bx-log-out icon' ></i>
                         <span class="text nav-text">Cerrar sesión</span>
                     </a>
@@ -119,17 +119,17 @@
             <h2>Bienvenido: <%=datosUsuario[0].nombre%> <%=datosUsuario[0].apellido%></h2>
             <h6>Gerente de soporte</h6>
             
-            <a href="#1" class="botonAcc color1">
+            <a href="#seccion1" class="botonAcc color1">
                 <i class='bx bx-bell movers'></i> Reportes
             </a>
-            <a href="#2" class="botonAcc color1">
+            <a href="#seccion2" class="botonAcc color1">
                 <i class='bx bxl-slack-old movers'></i> Reportes del Gerente de Mantenimiento
             </a>
-            <a href="#3" class="botonAcc color1">
+            <a href="#seccion3" class="botonAcc color1">
                 <i class='bx bx-album movers'></i> Reportes totales
             </a>
             <%if(typeof ReportesAbiertos !== 'undefined' && ReportesAbiertos.length>0){%>
-            <div class="contenedorreporte" id="1">
+            <div class="contenedorreporte" id="seccion1">
                 <h4 class="titulo">
                     <i class='bx bx-bell mov bro'></i>Reportes generados por el asistente de soporte
                 </h4>
@@ -168,10 +168,10 @@
                                     </select>
                                 </td>
                                 <td data-label="Estatus">
-                                    <select class="estatus estatusForm" name="" id="">
-                                        <option value=""><%=ReportesAbiertos[i].descripcion_estatus%></option>
-                                        <option value="">En proceso</option>
-                                        <option value="">En mantenimiento</option>
+                                    <select class="estatus estatusForm" name="" id="<%=ReportesAbiertos[i].id_reporte%>" onchange="obtenerIdSeleccionado(event)">
+                                        <option value="0"><%=ReportesAbiertos[i].descripcion_estatus%></option>
+                                        <option value="1">En proceso</option>
+                                        <option value="2">En mantenimiento</option>
                                     </select>
                                 </td>
                                 <td data-label="Descripción">
@@ -190,7 +190,7 @@
                 </table>
             </div>
             <%}%>
-            <div class="contenedorreporte" id="2">
+            <div class="contenedorreporte" id="seccion2">
                 <h4 class="titulo">
                     <i class='bx bxl-slack-old mov bro'></i>Reportes enviados por Gerente de Mantenimiento
                 </h4>
@@ -251,7 +251,7 @@
                 </table>
             </div>
             <%if(typeof TodosReportes !== 'undefined' && TodosReportes.length>0){%>
-            <div class="contenedorreporte" id="3">
+            <div class="contenedorreporte" id="seccion3">
                 <h4 class="titulo">
                     <i class='bx bx-album mov bro'></i>Reportes totales
                 </h4>
@@ -299,6 +299,23 @@
             <%}%>
         </div>
     <script src="/js/sidebar.js"></script>
+    <script>
+          function obtenerIdSeleccionado(event) {
+    var selectElement = event.target; // Obtiene el elemento <select> que activó el evento
+    var selectedId = selectElement.id; // Obtiene el id del <select> seleccionado
+
+    var id =selectedId;
+    // Obtener el elemento select
+var selectElement = document.getElementById(id);
+console.log(selectElement)
+
+// Obtener el valor seleccionado
+var selectedValue = selectElement.value;
+
+// Mostrar el valor seleccionado
+console.log(selectedValue);
+  }
+    </script>
 </body>
 </html>
 <%}else{%>
