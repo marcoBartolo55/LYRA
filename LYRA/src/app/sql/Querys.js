@@ -211,22 +211,6 @@ db.EnlzarPsicoDoc = (Paciente,Psicologo)=>{
 
 // Modificación de datos
 
-// Gonzalo
-db.ActualizardatosDoctor = (Id_Usuario,Nombre,Apellido,Edad,Sexo,Correo)=>{
-  return new Promise(async(resolve, reject)=>{
-    const query = `CALL actualizar_persona_usuario(?, ?, ?, ?, ?, ?, ?)`;
-    const values = [Id_Usuario,Nombre,Apellido,Edad,Sexo,Correo,1];
-    con.query(query, values, (error,result)=>{
-      if (error) {
-        console.error(error);
-        reject(error);
-      } else {
-        resolve(result);
-      }
-    });
-  });
-};
-
 //Gonzalo
 db.ActualizarPass = (Usuario,Pass)=>{
   return new Promise(async(resolve, reject) => {
@@ -244,10 +228,10 @@ db.ActualizarPass = (Usuario,Pass)=>{
 };
 
 // Gonzalo
-db.ActualizardatosPaciente = (Id_Usuario,Nombre,Apellido,Edad,Sexo,Correo)=>{
+db.Actualizardatos = (Id_Usuario,Nombre,Apellido,Edad,Sexo,Correo)=>{
   return new Promise(async(resolve, reject)=>{
-    const query = `CALL actualizar_persona_usuario(?, ?, ?, ?, ?, ?, ?)`;
-    const values = [Id_Usuario,Nombre,Apellido,Edad,Sexo,Correo,2];
+    const query = `CALL actualizar_persona_usuario(?, ?, ?, ?, ?, ?)`;
+    const values = [Id_Usuario,Nombre,Apellido,Edad,Sexo,Correo];
     con.query(query, values, (error,result)=>{
       if (error) {
         console.error(error);

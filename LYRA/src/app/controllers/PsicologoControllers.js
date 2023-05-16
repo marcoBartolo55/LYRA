@@ -45,7 +45,7 @@ Controllers.EditarDatosPsicologoPost = async(req,res,next)=>{
   try{
     const datosUsuario =await querys.buscarUsuario(Usuario);
     if(datosUsuario.length > 0){
-      const ActualizardatosDoctor = await querys.ActualizardatosDoctor(datosUsuario[0].id_persona,Nombre,Apellidos,Edad,Sexo,Correo);
+      const ActualizardatosDoctor = await querys.Actualizardatos(datosUsuario[0].id_persona,Nombre,Apellidos,Edad,Sexo,Correo);
       if(ActualizardatosDoctor){
         return res.redirect('/Psicologo/EditarPerfil?alerta=Datos Actualizados');    
       }
