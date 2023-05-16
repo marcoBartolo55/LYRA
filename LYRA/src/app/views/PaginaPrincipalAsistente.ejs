@@ -17,15 +17,152 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/pacientesLyra.css">
     <link rel="stylesheet" href="/css/PPP.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
 
 </head>
 <body>
     <body>
         <!--La barra-->
             <%if(TipoUsu === 7){%>
-            <iframe id="sidebar-frame" src="/html/sidebar.html" class="frame disabled" frameborder="0" scrolling="no"></iframe>
+              <nav class="sidebar close">
+                <header>
+                    <div class="image-text">
+                        <span class="image">
+                            <img src="logo.png" alt="">
+                        </span>
+                        <div class="text logo-text">
+                            <span class="name">Lyra</span>
+                            <span class="profession">Soporte</span>
+                        </div>
+                    </div>
+                    <i class='bx bx-menu toggle iconblack'></i>
+                </header>
+                <div class="menu-bar">
+                    <div class="menu">
+                        <li class="search-box">
+                            <a href="#">
+                                <i class='bx bx-home-alt icon' ></i>
+                                <span class="text nav-text">Principal</span>
+                            </a>
+                        </li>
+                        <ul class="menu-links">
+                            <li class="nav-link">
+                                <a href="#">
+                                    <i class='bx bx-pen icon' ></i>
+                                    <span class="text nav-text">
+                                        Modificar <br> <h6>Perfil</h6>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bottom-content">
+                        <li class="">
+                            <a href="/" class="text nav-text">Cerrar sesión</span>
+                            </a>
+                        </li>
+                        <li class="mode">
+                            <div class="sun-moon">
+                                <i class='bx bx-moon icon moon'></i>
+                                <i class='bx bx-sun icon sun'></i>
+                            </div>
+                            <span class="mode-text text">Barra oscura</span>
+        
+                            <div class="toggle-switch">
+                                <span class="switch"></span>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+            </nav>
             <%}else if(TipoUsu === 3){%>
-              <iframe id="sidebar-frame" src="/html/sidebar.html" class="frame" frameborder="0" scrolling="no"></iframe>
+              <nav class="sidebar close">
+                <header>
+                    <div class="image-text">
+                        <span class="image">
+                            <img src="logo.png" alt="">
+                        </span>
+                        <div class="text logo-text">
+                            <span class="name">Lyra</span>
+                            <span class="profession">Soporte</span>
+                        </div>
+                    </div>
+                    <i class='bx bx-menu toggle iconblack'></i>
+                </header>
+                <div class="menu-bar">
+                    <div class="menu">
+                        <ul class="menu-links">
+                            <li class="nav-link">
+                                <a href="#">
+                                    <i class='bx bx-pen icon' ></i>
+                                    <span class="text nav-text">
+                                        Asistente <br> <h6>Soporte</h6>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-link">
+                                <a href="#">
+                                    <i class='bx bx-message-dots icon' ></i>
+                                    <span class="text nav-text">
+                                        Editor <br> <h6>FAQ</h6>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-link">
+                                <a href="#">
+                                    <i class='bx bx-brush icon'></i>
+                                    <span class="text nav-text mini">
+                                        Gerente <br> <h6>Mantenimiento</h6>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-link">
+                                <a href="#">
+                                    <i class='bx bx-adjust icon' ></i>
+                                    <span class="text nav-text mini">
+                                        Ingeniero <br> <h6>Soporte</h6>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-link">
+                                <a href="#">
+                                    <i class='bx bx-heart icon' ></i>
+                                    <span class="text nav-text mini">
+                                        Ingeniero <br> <h6>Mantenimiento</h6>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-link">
+                                <a href="/Soporte/GerenteSoporte">
+                                    <i class='bx bx-diamond icon' ></i>
+                                    <span class="text nav-text mini">
+                                        Gerente <br> <h6>Soporte</h6>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bottom-content">
+                        <li class="">
+                            <a href="#">
+                                <i class='bx bx-log-out icon' ></i>
+                                <span class="text nav-text">Cerrar sesión</span>
+                            </a>
+                        </li>
+                        <li class="mode">
+                            <div class="sun-moon">
+                                <i class='bx bx-moon icon moon'></i>
+                                <i class='bx bx-sun icon sun'></i>
+                            </div>
+                            <span class="mode-text text">Barra oscura</span>
+        
+                            <div class="toggle-switch">
+                                <span class="switch"></span>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+            </nav>
             <%}%>
         <!--La barra-->
         <div class="containerP">
@@ -33,7 +170,7 @@
             <%if(TipoUsu === 7){%>
             <h6>Puesto de asistente</h6>
             <%}else if(TipoUsu === 3){%>
-              <h6>Puesto de gerente de mantenimiento</h6>
+              <h6>Puesto de gerente de soporte</h6>
             <%}%>
             <a href="#1" class="botonAcc color1">
                 <i class='bx bx-plus movers'></i>Generar reporte
@@ -110,6 +247,7 @@
             </div>
         </div>
     <script src="/js/PPP.js"></script>
+    <script src="/js/sidebar.js"></script>
     <%if(typeof alerta !== 'undefined'){%>
       <script src="/js/Alertas.js"></script>
       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

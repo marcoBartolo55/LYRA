@@ -43,4 +43,19 @@ Controllers.AñadirReporte = async (req,res,next)=>{
     return res.redirect('/Soporte/Asistente?alerta=Error')
   }  
 }
+
+//Gerente de Soporte
+Controllers.PaginaPrincipalGerenteSoporte= async (req,res,next)=>{
+  const Usuario = req.session.usuario;
+  const TipoUsu = req.session.tipo_usuario;
+  const alerta = req.query.alerta;
+  try{
+    const datosUsuario =await querys.buscarUsuario(Usuario);
+    const Reportes = await querys.BuscarReportesAbiertos();
+    res.render('PaginaPrincipalGerenteSoporte',{Usuario,TipoUsu,alerta,datosUsuario,Reportes,formatearFechaHora});
+  }catch(error){
+    console.log(error);
+  }
+};
+
 module.exports = Controllers;

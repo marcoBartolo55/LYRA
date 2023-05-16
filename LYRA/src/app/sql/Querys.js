@@ -34,7 +34,7 @@ db.BuscarReportesAbiertos = ()=>{
   });
 };
 
-//Marcos
+//Todes
 db.buscarUsuario = (nombre_usuario) => {
   return new Promise((resolve, reject) => {
     con.query(`SELECT * FROM usuario NATURAL JOIN persona where nombre_usuario = ?`, [nombre_usuario], (error, result) => {
@@ -145,7 +145,7 @@ db.DesplegarPacientes = (Doctor)=>{
     });
   })
 };
-
+//Isaac
 db.InfoPacientes = (Paciente)=>{
   return new Promise(async(resolve, reject) =>{
     const query = `SELECT * FROM datospaciente where nombre_usuario = '${Paciente}'`;
@@ -159,7 +159,7 @@ db.InfoPacientes = (Paciente)=>{
     });
   })
 };
-
+//Isaac
 db.BuscarResumenes=(Paciente)=>{
   return new Promise(async(resolve, reject) =>{
     const query = `SELECT * FROM resumen_conversacion NATURAL JOIN psicologo_paciente where nombre_Paciente ='${Paciente}'`;

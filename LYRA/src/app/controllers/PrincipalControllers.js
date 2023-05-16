@@ -60,7 +60,7 @@ Controllers.RegistroPsicologosPost = async (req, res, next) => {
   }
 }
 
-//Marco 
+//Isaac
 Controllers.InicioSesionPost = async (req, res, next) => {
   const { Usuario, Pass } = req.body;
   
@@ -79,7 +79,7 @@ Controllers.InicioSesionPost = async (req, res, next) => {
           res.redirect('/Paciente');
           break;
         case 3:
-          // Código para usuario de tipo 3
+          res.redirect('/Soporte/GerenteSoporte');
           break;
         case 4:
           // Código para usuario de tipo 4

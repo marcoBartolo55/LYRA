@@ -101,7 +101,7 @@ Controllers.EnlazarPaciente=(req,res,next)=>{
     res.redirect('/Psicologo?alerta=Error');
   })
 };
-
+//Isaac
 Controllers.Resumenes=async(req,res,next)=>{
   const Usuario = req.session.usuario;
   const TipoUsu = req.session.tipo_usuario;
