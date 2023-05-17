@@ -22,7 +22,7 @@ Controllers.PaginaPrincipalAsistente =async (req,res,next) => {
   const alerta = req.query.alerta;
   try{
     const datosUsuario =await querys.buscarUsuario(Usuario);
-    const GerenteSop = await querys.buscarGerentesManteni();
+    const GerenteSop = await querys.buscarGerentesSoporte();
     const PacyDoc = await querys.buscarDoctoresyPacientes();
     const Reportes = await querys.BuscarReportesAbiertos();
     res.render('PaginaPrincipalAsistente',{Usuario,TipoUsu,alerta,datosUsuario,PacyDoc,GerenteSop,Reportes,formatearFechaHora});
@@ -52,8 +52,10 @@ Controllers.PaginaPrincipalGerenteSoporte= async (req,res,next)=>{
   try{
     const datosUsuario =await querys.buscarUsuario(Usuario);
     const ReportesAbiertos = await querys.BuscarReportesAbiertos();
+    const GerentesMantenimiento = await querys.buscarGerentesMantenimiento();
+    const IngenirosSoporte = await querys.buscarIngenierosSoporte();
     const TodosReportes = await querys.Reportes();
-    res.render('PaginaPrincipalGerenteSoporte',{Usuario,TipoUsu,alerta,datosUsuario,ReportesAbiertos,TodosReportes,formatearFechaHora});
+    res.render('PaginaPrincipalGerenteSoporte',{Usuario,TipoUsu,alerta,datosUsuario,ReportesAbiertos,TodosReportes,GerentesMantenimiento,IngenirosSoporte,formatearFechaHora});
   }catch(error){
     console.log(error);
   }
