@@ -179,7 +179,7 @@
                 <i class='bx bx-bell movers'></i>Ver reportes
             </a>
             <%if(typeof PacyDoc !== undefined && PacyDoc.length >0 && typeof GerenteSop !== undefined && GerenteSop.length >0){%>
-            <form action="/Soporte/Asistente/AgregarReporte" method="post" id="1">
+            <form action="/Soporte/Asistente/AgregarReporte" method="post" id="form1">
                 <div class="form">
                     <h4 class="titulo2">Agregar reporte</h4>
                     <h6 class="tituloform">Usuario solicitante</h6>
@@ -246,8 +246,12 @@
                 </table>
             </div>
         </div>
+
     <script src="/js/PPP.js"></script>
+    <script src="/js/asisVali.js"></script>
     <script src="/js/sidebar.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <%if(typeof alerta !== 'undefined'){%>
       <script src="/js/Alertas.js"></script>
       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -261,6 +265,7 @@
         </script>
       <%}%>
     <%}%>
+
     </body>
 </body>
 </html>
