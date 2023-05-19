@@ -14,6 +14,11 @@
     href="https://i.ibb.co/gFdWfc6/Whats-App-Image-2023-04-27-at-8-43-16-AM-1-modified.png"
     type="image/svg"
     />
+    <script>
+        const ReportesAbiertos = <%- JSON.stringify(ReportesAbiertos) %>;
+        const GerentesMantenimiento = <%- JSON.stringify(GerentesMantenimiento) %>;
+        const IngenirosSoporte = <%- JSON.stringify(IngenirosSoporte) %>;
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/pacientesLyra.css">
     <link rel="stylesheet" href="/css/PPP.css">
@@ -161,17 +166,15 @@
                                     <%=ReportesAbiertos[i].id_usuario_manipulo_Reporte%>
                                 </td>
                                 <td data-label="Asignar a">
-                                    <select class="estatus estatusForm" name="" id="">
-                                        <option value=""><%=ReportesAbiertos[i].descripcion_estatus%></option>
-                                        <option value="">Nadie</option>
-                                        <option value="">id y nombre de usuario</option>
+                                    <select class="estatus estatusForm" name="" id="Asignar <%=ReportesAbiertos[i].id_reporte%>">
+                                        <option value=""><%=ReportesAbiertos[i].id_usuario_asignado%></option>
                                     </select>
                                 </td>
                                 <td data-label="Estatus">
                                     <select class="estatus estatusForm" name="" id="<%=ReportesAbiertos[i].id_reporte%>" onchange="obtenerIdSeleccionado(event)">
-                                        <option value="0"><%=ReportesAbiertos[i].descripcion_estatus%></option>
-                                        <option value="1">En proceso</option>
-                                        <option value="2">En mantenimiento</option>
+                                        <option value="1"><%=ReportesAbiertos[i].descripcion_estatus%></option>
+                                        <option value="2">En proceso</option>
+                                        <option value="3">En mantenimiento</option>
                                     </select>
                                 </td>
                                 <td data-label="Descripción">
@@ -306,15 +309,41 @@
 
     var id =selectedId;
     // Obtener el elemento select
-var selectElement = document.getElementById(id);
-console.log(selectElement)
+    var selectElement = document.getElementById(id);
 
-// Obtener el valor seleccionado
-var selectedValue = selectElement.value;
+    // Obtener el valor seleccionado
+    var selectedValue = selectElement.value;
 
-// Mostrar el valor seleccionado
-console.log(selectedValue);
+    // Mostrar el valor seleccionado
+
+    var selectElement = document.getElementById("Asignar " +id);
+
+  // Eliminar opciones existentes
+  selectElement.innerHTML = "";
+if(selectedValue === '1'){
+  // Crear nuevas opciones
+  var option2 = document.createElement("option");
+  option2.value = ReportesAbiertos[id-1].id_usuario_asignado;
+  option2.textContent = ReportesAbiertos[id-1].id_usuario_asignado;
+  selectElement.appendChild(option2);
+  // Agregar las nuevas opciones al elemento select
+  }else if(selectedValue === '2'){
+    for(let i=0; i<IngenirosSoporte.length; i++) {
+        var option1 = document.createElement("option");
+        option1.value = IngenirosSoporte[i].nombre_usuario;;
+        option1.textContent = IngenirosSoporte[i].nombre_usuario;
+        selectElement.appendChild(option1);
+    }
+  }else if(selectedValue === '3'){
+    for(let i=0; i<GerentesMantenimiento.length; i++) {
+        var option1 = document.createElement("option");
+        option1.value = GerentesMantenimiento[i].nombre_usuario;;
+        option1.textContent = GerentesMantenimiento[i].nombre_usuario;
+        selectElement.appendChild(option1);
+    }
   }
+
+}
     </script>
 </body>
 </html>

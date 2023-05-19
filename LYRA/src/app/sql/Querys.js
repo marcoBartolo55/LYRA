@@ -63,9 +63,35 @@ db.buscarDoctoresyPacientes = () =>{
 }
 
 //Enrique
-db.buscarGerentesManteni = () =>{
+db.buscarGerentesSoporte = () =>{
   return new Promise((resolve, reject) => {
     con.query(`SELECT * FROM usuario NATURAL JOIN persona where id_tipo_usuario = 3`, (error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+}
+
+db.buscarGerentesMantenimiento = () =>{
+  return new Promise((resolve, reject) => {
+    con.query(`SELECT * FROM usuario NATURAL JOIN persona where id_tipo_usuario = 4`, (error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+}
+
+db.buscarIngenierosSoporte = () =>{
+  return new Promise((resolve, reject) => {
+    con.query(`SELECT * FROM usuario NATURAL JOIN persona where id_tipo_usuario = 5`, (error, result) => {
       if (error) {
         console.error(error);
         reject(error);

@@ -29,6 +29,7 @@
         <div class="microphonemessage">Habla conmigo</div>
     </body>
 
+    
 
     <script>
     const microphoneBtn = document.querySelector(".microphone-btn");
@@ -36,6 +37,25 @@
     const cargando = 'cargandoB';
     const error = 'errorB';
     const respondiendo = 'respondiendoB';
+    // Lo de llenar lista es para el microfono
+    const llenarLista = () => {
+    navigator
+        .mediaDevices
+        .enumerateDevices()
+        .then(dispositivos => {
+            limpiarSelect();
+            dispositivos.forEach((dispositivo, indice) => {
+                if (dispositivo.kind === "audioinput") {
+                    const $opcion = document.createElement("option");
+                    // Firefox no trae nada con label, que viva la privacidad
+                    // y que muera la compatibilidad
+                    $opcion.text = dispositivo.label || `Dispositivo ${indice + 1}`;
+                    $opcion.value = dispositivo.deviceId;
+                    $listaDeDispositivos.appendChild($opcion);
+                }
+            })
+        })
+};
 
     microphoneBtn.addEventListener("click", () => {
       if (microphoneBtn.classList.contains("animate")) {
