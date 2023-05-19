@@ -11,6 +11,11 @@ Controllers.RegistroPacientesGet=(req,res,next)=>{
     const alerta = req.query.alerta;
     res.render('RegistroPacientes',{alerta});
 };
+
+Controllers.PruebaAudioGet=(req,res,next)=>{
+  res.render('prueba')
+}
+
 //Marco
 Controllers.InicioSesionGet=(req,res,next)=>{
   req.session.destroy();

@@ -8,6 +8,9 @@ router.get('/RegistroPacientes',PrincipalControllers.RegistroPacientesGet);
 //Marco
 router.get('/RegistroPsicologos',PrincipalControllers.RegistroPsicolosGet);
 
+//Pruebas para conversion de audio a base64 y viceversa
+router.get('/prueba',PrincipalControllers.PruebaAudioGet);
+
 //Marco
 router.get('/InicioSesion',PrincipalControllers.InicioSesionGet);
 //Post
