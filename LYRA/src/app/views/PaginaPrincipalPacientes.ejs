@@ -4,14 +4,13 @@
     <html>
     <head>
       <title>Chat</title>
-        <link rel="stylesheet" href="/css/chatLyra.css">
         <link
         rel="shortcut icon"
         href="https://i.ibb.co/gFdWfc6/Whats-App-Image-2023-04-27-at-8-43-16-AM-1-modified.png"
         type="image/svg"
         />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      
+        <link rel="stylesheet" href="/css/chatLyra.css">
     </head>
     <body>
         <a href="/Paciente/EditarPerfil" class="floating-button">
@@ -197,20 +196,19 @@
     document.addEventListener("DOMContentLoaded", init);
     microphoneBtn.addEventListener("click", () => {
       // iniciar la animación del botón
-        microphoneBtn2.classList.add("animate");
         ide2.hidden = false;
         ide1.hidden = true;
         microphoneMessage.textContent = "Escuchando...";
-      
+        microphoneBtn2.classList.add("animate");
     });
 
    microphoneBtn2.addEventListener("click", () => {
       if (microphoneBtn2.classList.contains("animate")) {
         // detener la animación del botón
-        microphoneBtn2.classList.remove("animate");
         ide1.hidden = false;
         ide2.hidden = true;
         microphoneMessage.textContent = "Habla conmigo"; // Agregar el texto "¡Habla conmigo!"
+        microphoneBtn2.classList.remove("animate");
       } 
     });
 
