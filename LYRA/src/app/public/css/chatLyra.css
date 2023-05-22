@@ -366,3 +366,8 @@ box-shadow: none !important;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   background-color: white;
 }
+
+.microphonemessage{
+  margin-top: 10px !important; 
+  transform: translateY(20px);
+}
