@@ -1,5 +1,6 @@
 const mysql = require('mysql2');
 const encrypt = require('../helpers/EncriptarContraseñas');
+const moment = require('moment-timezone');
 
 const con = mysql.createConnection({
   host: "localhost",
@@ -23,7 +24,160 @@ const db = {};
 //Enrique
 db.BuscarReportesAbiertos = ()=>{
   return new Promise((resolve, reject) => {
-    con.query(`SELECT * FROM reporte NATURAL JOIN reporte_estatus where id_Reporte_Estatus = 1`, (error, result) => {
+    con.query(`SELECT r.*, re.descripcion_estatus
+    FROM Reporte AS r
+    JOIN Reporte_Estatus AS re ON r.id_Repore_Estatus = re.id_Reporte_Estatus
+    WHERE r.id_Repore_Estatus = 1`, (error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+//Enrique
+db.BuscarReportesMantenimientoPersonal = (Usuario)=>{
+  return new Promise((resolve, reject) => {
+    con.query(`SELECT r.*, re.descripcion_estatus
+    FROM Reporte AS r
+    JOIN Reporte_Estatus AS re ON r.id_Repore_Estatus = re.id_Reporte_Estatus
+    WHERE r.id_Repore_Estatus = 3 and r.id_usuario_asignado='${Usuario}'`, (error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+//Enrique
+db.BuscarReportesFinalizadoMantenimientoPersonal = (Usuario)=>{
+  return new Promise((resolve, reject) => {
+    con.query(`SELECT r.*, re.descripcion_estatus
+    FROM Reporte AS r
+    JOIN Reporte_Estatus AS re ON r.id_Repore_Estatus = re.id_Reporte_Estatus
+    WHERE r.id_Repore_Estatus = 5 and r.id_usuario_asignado='${Usuario}'`, (error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+db.BuscarReportesFinalizadoMantenimiento = ()=>{
+  return new Promise((resolve, reject) => {
+    con.query(`SELECT r.*, re.descripcion_estatus
+    FROM Reporte AS r
+    JOIN Reporte_Estatus AS re ON r.id_Repore_Estatus = re.id_Reporte_Estatus
+    WHERE r.id_Repore_Estatus = 5`, (error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+db.BuscarReportesMantenimiento = ()=>{
+  return new Promise((resolve, reject) => {
+    con.query(`SELECT r.*, re.descripcion_estatus
+    FROM Reporte AS r
+    JOIN Reporte_Estatus AS re ON r.id_Repore_Estatus = re.id_Reporte_Estatus
+    WHERE r.id_Repore_Estatus = 3`, (error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+//Enrique
+db.BuscarReporteMantenimientoFinalizado = ()=>{
+  return new Promise((resolve, reject) => {
+    con.query(`SELECT r.*, re.descripcion_estatus
+    FROM Reporte AS r
+    JOIN Reporte_Estatus AS re ON r.id_Repore_Estatus = re.id_Reporte_Estatus
+    WHERE r.id_Repore_Estatus = 6`, (error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+//Enrique
+db.BuscarReportesEnviadosGerenteMantenimientoPersonal = (Usuario)=>{
+  return new Promise((resolve, reject) => {
+    con.query(`SELECT r.*, re.descripcion_estatus
+    FROM Reporte AS r
+    JOIN Reporte_Estatus AS re ON r.id_Repore_Estatus = re.id_Reporte_Estatus
+    WHERE r.id_Repore_Estatus = 4 or id_Repore_Estatus=6 and id_usuario_manipulo_Reporte='${Usuario}'`, (error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+//Enrique
+db.BuscarReportesEnProgramacionPersonal = (Usuario)=>{
+  return new Promise((resolve, reject) => {
+    con.query(`SELECT r.*, re.descripcion_estatus
+    FROM Reporte AS r
+    JOIN Reporte_Estatus AS re ON r.id_Repore_Estatus = re.id_Reporte_Estatus
+    WHERE r.id_Repore_Estatus = 4 and id_usuario_asignado='${Usuario}'`, (error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+//Enrique
+db.BuscarReportesEnProgramacion = (Usuario)=>{
+  return new Promise((resolve, reject) => {
+    con.query(`SELECT r.*, re.descripcion_estatus
+    FROM Reporte AS r
+    JOIN Reporte_Estatus AS re ON r.id_Repore_Estatus = re.id_Reporte_Estatus
+    WHERE r.id_Repore_Estatus = 4`, (error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+//Enrique
+db.BuscarReportesEnviadosGerenteMantenimiento = ()=>{
+  return new Promise((resolve, reject) => {
+    con.query(`SELECT r.*, re.descripcion_estatus
+    FROM Reporte AS r
+    JOIN Reporte_Estatus AS re ON r.id_Repore_Estatus = re.id_Reporte_Estatus
+    WHERE r.id_Repore_Estatus = 4 or id_Repore_Estatus=6`, (error, result) => {
       if (error) {
         console.error(error);
         reject(error);
@@ -102,14 +256,28 @@ db.buscarIngenierosSoporte = () =>{
   });
 }
 
+db.buscarIngenierosMantenimiento = () =>{
+  return new Promise((resolve, reject) => {
+    con.query(`SELECT * FROM usuario NATURAL JOIN persona where id_tipo_usuario = 6`, (error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+}
+
 //Enrique
 db.AgregarReporte =(Id_UsarioSolici,Id_Manupulo,Id_GerenteSo,Descripcion)=>{
   return new Promise(async(resolve, reject) =>{
-    // Obtener la fecha y hora actual
-const fechaHoraActual = new Date();
-
-// Formatear la fecha y hora en el formato deseado para MySQL (datetime: 'YYYY-MM-DD HH:MM:SS')
-const fechaHoraFormateada = fechaHoraActual.toISOString().slice(0, 19).replace('T', ' ');
+    // Obtener la fecha y hora actual en la zona horaria de México
+    const fechaHoraActual = moment().tz('America/Mexico_City');
+    
+    // Formatear la fecha y hora en el formato deseado para MySQL (datetime: 'YYYY-MM-DD HH:MM:SS')
+    const fechaHoraFormateada = fechaHoraActual.format('YYYY-MM-DD HH:mm:ss');
+    
 
     const query = `INSERT INTO reporte VALUES 
     (default,'${Id_UsarioSolici}','${Id_Manupulo}','${Id_GerenteSo}',1,'${fechaHoraFormateada}','${Descripcion}','')`;
@@ -281,5 +449,45 @@ db.Actualizardatos = (Id_Usuario,Nombre,Apellido,Edad,Sexo,Correo)=>{
     });
   });
 };
+
+//Enrique
+db.ActualizarReporteGerentes =(Id_Reporte,UsuarioAsignado,UsuarioManipula,Estado)=>{
+  return new Promise(async(resolve, reject)=>{
+    // Obtener la fecha y hora actual en la zona horaria de México
+    const fechaHoraActual = moment().tz('America/Mexico_City');
+    // Formatear la fecha y hora en el formato deseado para MySQL (datetime: 'YYYY-MM-DD HH:MM:SS')
+    const fechaHoraFormateada = fechaHoraActual.format('YYYY-MM-DD HH:mm:ss');
+    const Estatus=parseInt(Estado) 
+    const query = `update reporte set id_usuario_manipulo_Reporte='${UsuarioManipula}', id_Repore_Estatus=${Estatus}, id_usuario_asignado='${UsuarioAsignado}', fecha_hora='${fechaHoraFormateada}' where id_reporte=${Id_Reporte} `;
+    con.query(query,(error,result)=>{
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+}
+
+//Enrique
+db.ActualizarReporteIngenieros =(Id_Reporte,UsuarioAsignado,UsuarioManipula,Estado,Solucion)=>{
+  return new Promise(async(resolve, reject)=>{
+    // Obtener la fecha y hora actual en la zona horaria de México
+    const fechaHoraActual = moment().tz('America/Mexico_City');
+    // Formatear la fecha y hora en el formato deseado para MySQL (datetime: 'YYYY-MM-DD HH:MM:SS')
+    const fechaHoraFormateada = fechaHoraActual.format('YYYY-MM-DD HH:mm:ss');
+    const Estatus=parseInt(Estado) 
+    const query = `update reporte set id_usuario_manipulo_Reporte='${UsuarioManipula}', id_Repore_Estatus=${Estatus}, id_usuario_asignado='${UsuarioAsignado}', fecha_hora='${fechaHoraFormateada}',solucion_reporte='${Solucion}' where id_reporte=${Id_Reporte} `;
+    con.query(query,(error,result)=>{
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+}
 // Eliminación de datos
 module.exports = db;

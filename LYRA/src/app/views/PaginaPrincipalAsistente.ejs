@@ -76,93 +76,115 @@
                 </div>
             </nav>
             <%}else if(TipoUsu === 3){%>
-              <nav class="sidebar close">
-                <header>
-                    <div class="image-text">
-                        <span class="image">
-                            <img src="logo.png" alt="">
-                        </span>
-                        <div class="text logo-text">
-                            <span class="name">Lyra</span>
-                            <span class="profession">Soporte</span>
+                <nav class="sidebar close">
+                    <header>
+                        <div class="image-text">
+                            <span class="image">
+                                <img src="logo.png" alt="">
+                            </span>
+                            <div class="text logo-text">
+                                <span class="name">Lyra</span>
+                                <span class="profession">Soporte</span>
+                            </div>
+                        </div>
+                        <i class='bx bx-menu toggle iconblack'></i>
+                    </header>
+                    <div class="menu-bar">
+                        <div class="menu">
+                            <li class="search-box">
+                                <a href="/Soporte/GerenteSoporte">
+                                    <i class='bx bx-home-alt icon' ></i>
+                                    <span class="text nav-text">Lyra</span>
+                                </a>
+                            </li>
+                            <ul class="menu-links">
+                                <li class="nav-link">
+                                    <a href="/Soporte/Asistente">
+                                        <i class='bx bx-pen icon' ></i>
+                                        <span class="text nav-text">
+                                            Asistente <br> <h6>Soporte</h6>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-link">
+                                    <a href="/Soporte/EditorFAQ">
+                                        <i class='bx bx-message-dots icon' ></i>
+                                        <span class="text nav-text">
+                                            Editor <br> <h6>FAQ</h6>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-link">
+                                    <a href="/Soporte/GerenteMantenimiento">
+                                        <i class='bx bx-brush icon'></i>
+                                        <span class="text nav-text mini">
+                                            Gerente <br> <h6>Mantenimiento</h6>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-link">
+                                    <a href="/Soporte/IngenieroSoporte">
+                                        <i class='bx bx-adjust icon' ></i>
+                                        <span class="text nav-text mini">
+                                            Ingeniero <br> <h6>Soporte</h6>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-link">
+                                    <a href="/Soporte/IngenieroMantenimiento">
+                                        <i class='bx bx-heart icon' ></i>
+                                        <span class="text nav-text mini">
+                                            Ingeniero <br> <h6>Mantenimiento</h6>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-link">
+                                    <a href="/Soporte/GerenteSoporte">
+                                        <i class='bx bx-diamond icon' ></i>
+                                        <span class="text nav-text mini">
+                                            Gerente <br> <h6>Soporte</h6>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-link">
+                                    <a href="/Soporte/AgregarEmpleados">
+                                        <i class='bx bx-plus-circle icon' ></i>
+                                        <span class="text nav-text mini">
+                                            Agregar <br> <h6>Usuarios</h6>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-link">
+                                    <a href="">
+                                        <i class='bx bx-pencil icon' ></i>
+                                        <span class="text nav-text mini">
+                                            Editar <br> <h6>Datos personales</h6>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bottom-content">
+                            <li class="">
+                                <a href="/">
+                                    <i class='bx bx-log-out icon' ></i>
+                                    <span class="text nav-text">Cerrar sesión</span>
+                                </a>
+                            </li>
+                            <li class="mode">
+                                <div class="sun-moon">
+                                    <i class='bx bx-moon icon moon'></i>
+                                    <i class='bx bx-sun icon sun'></i>
+                                </div>
+                                <span class="mode-text text">Barra oscura</span>
+            
+                                <div class="toggle-switch">
+                                    <span class="switch"></span>
+                                </div>
+                            </li>
                         </div>
                     </div>
-                    <i class='bx bx-menu toggle iconblack'></i>
-                </header>
-                <div class="menu-bar">
-                    <div class="menu">
-                        <ul class="menu-links">
-                            <li class="nav-link">
-                                <a href="#">
-                                    <i class='bx bx-pen icon' ></i>
-                                    <span class="text nav-text">
-                                        Asistente <br> <h6>Soporte</h6>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="nav-link">
-                                <a href="#">
-                                    <i class='bx bx-message-dots icon' ></i>
-                                    <span class="text nav-text">
-                                        Editor <br> <h6>FAQ</h6>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="nav-link">
-                                <a href="#">
-                                    <i class='bx bx-brush icon'></i>
-                                    <span class="text nav-text mini">
-                                        Gerente <br> <h6>Mantenimiento</h6>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="nav-link">
-                                <a href="#">
-                                    <i class='bx bx-adjust icon' ></i>
-                                    <span class="text nav-text mini">
-                                        Ingeniero <br> <h6>Soporte</h6>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="nav-link">
-                                <a href="#">
-                                    <i class='bx bx-heart icon' ></i>
-                                    <span class="text nav-text mini">
-                                        Ingeniero <br> <h6>Mantenimiento</h6>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="nav-link">
-                                <a href="/Soporte/GerenteSoporte">
-                                    <i class='bx bx-diamond icon' ></i>
-                                    <span class="text nav-text mini">
-                                        Gerente <br> <h6>Soporte</h6>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="bottom-content">
-                        <li class="">
-                            <a href="/">
-                                <i class='bx bx-log-out icon' ></i>
-                                <span class="text nav-text">Cerrar sesión</span>
-                            </a>
-                        </li>
-                        <li class="mode">
-                            <div class="sun-moon">
-                                <i class='bx bx-moon icon moon'></i>
-                                <i class='bx bx-sun icon sun'></i>
-                            </div>
-                            <span class="mode-text text">Barra oscura</span>
-        
-                            <div class="toggle-switch">
-                                <span class="switch"></span>
-                            </div>
-                        </li>
-                    </div>
-                </div>
-            </nav>
+                </nav>
             <%}%>
         <!--La barra-->
         <div class="containerP">

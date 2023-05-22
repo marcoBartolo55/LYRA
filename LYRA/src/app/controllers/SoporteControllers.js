@@ -55,11 +55,39 @@ Controllers.PaginaPrincipalGerenteSoporte= async (req,res,next)=>{
     const GerentesMantenimiento = await querys.buscarGerentesMantenimiento();
     const IngenirosSoporte = await querys.buscarIngenierosSoporte();
     const TodosReportes = await querys.Reportes();
-    res.render('PaginaPrincipalGerenteSoporte',{Usuario,TipoUsu,alerta,datosUsuario,ReportesAbiertos,TodosReportes,GerentesMantenimiento,IngenirosSoporte,formatearFechaHora});
+    const MantenimientoFinalizado = await querys.BuscarReporteMantenimientoFinalizado();
+    const GerenteSop = await querys.buscarGerentesSoporte();
+    res.render('PaginaPrincipalGerenteSoporte',{Usuario,TipoUsu,alerta,datosUsuario,ReportesAbiertos,MantenimientoFinalizado,TodosReportes,GerentesMantenimiento,GerenteSop,IngenirosSoporte,formatearFechaHora});
   }catch(error){
     console.log(error);
   }
 };
+
+//Actualizar reportes GerenteSoporte
+Controllers.ActualizarReportesGerenteSoporte = async(req,res,next)=>{
+  const Usuario = req.session.usuario;
+  const {Id_reporte,UsuarioAsignado,Estatus} = req.body;
+  try{
+    querys.ActualizarReporteGerentes(Id_reporte,UsuarioAsignado,Usuario,Estatus);
+    res.redirect('/Soporte/GerenteSoporte?alerta=Reporte Enviado');
+  }catch(error){
+    console.error(error);
+    res.redirect('/Soporte/GerenteSoporte?alerta=Reporte no Enviado');
+  }
+}
+
+//Actualizar reportes GerenteMantenimiento
+Controllers.ActualizarReportesGerenteMantenimiento = async(req,res,next)=>{
+  const Usuario = req.session.usuario;
+  const {Id_reporte,UsuarioAsignado,Estatus} = req.body;
+  try{
+    querys.ActualizarReporteGerentes(Id_reporte,UsuarioAsignado,Usuario,Estatus);
+    res.redirect('/Soporte/GerenteMantenimiento?alerta=Reporte Enviado');
+  }catch(error){
+    console.error(error);
+    res.redirect('/Soporte/GerenteMantenimiento?alerta=Reporte no Enviado');
+  }
+}
 
 //Todos los usuario
 Controllers.EditarDatos = async(req,res,next)=>{
@@ -104,4 +132,61 @@ Controllers.EditarPass = async(req,res,next) =>{
     return res.redirect('/Soporte/EditarPerfil?alerta=Error Pass');
   }
 };
+//Gerente de mantenimiento
+Controllers.PaginaPrincipalGerenteMantenimiento= async (req,res,next)=>{
+  const Usuario = req.session.usuario;
+  const TipoUsu = req.session.tipo_usuario;
+  const alerta = req.query.alerta;
+  try{
+    const datosUsuario =await querys.buscarUsuario(Usuario);
+    const ReportesMantenimientoPersonal = await querys.BuscarReportesMantenimientoPersonal(Usuario);
+    const ReportesMantenimiento = await querys.BuscarReportesMantenimiento();
+    const ReportesFinalizadoMantenimientoPersonal = await querys.BuscarReportesFinalizadoMantenimientoPersonal(Usuario);
+    const ReportesFinalizadoMantenimiento = await querys.BuscarReportesFinalizadoMantenimiento();
+    const GerentesMantenimiento = await querys.buscarGerentesMantenimiento();
+    const IngenirosMantenimiento = await querys.buscarIngenierosMantenimiento();
+    const TodosReportes = await querys.BuscarReportesEnviadosGerenteMantenimiento();
+    const TodosReportesPersonales = await querys.BuscarReportesEnviadosGerenteMantenimientoPersonal(Usuario);
+    const GerenteSop = await querys.buscarGerentesSoporte();
+    res.render('PaginaPrincipalGerenteMantenimiento',{
+      Usuario,TipoUsu,alerta,datosUsuario,
+      ReportesMantenimientoPersonal,ReportesMantenimiento,
+      ReportesFinalizadoMantenimientoPersonal,
+      ReportesFinalizadoMantenimiento,TodosReportes,
+      TodosReportesPersonales,GerentesMantenimiento,
+      GerenteSop,IngenirosMantenimiento,formatearFechaHora});
+  }catch(error){
+    console.log(error);
+  }
+};
+//Ingeniero de mantenimiento
+Controllers.PaginaPrincipalIngenieroMantenimiento= async(req,res,next)=>{
+  const Usuario = req.session.usuario;
+  const TipoUsu = req.session.tipo_usuario;
+  const alerta = req.query.alerta;
+  try{
+    const datosUsuario =await querys.buscarUsuario(Usuario);
+    const ReportesEnProgramacionPersonal = await querys.BuscarReportesEnProgramacionPersonal(Usuario);
+    const ReportesEnProgramacion = await querys.BuscarReportesEnProgramacion();
+    const GerentesMantenimiento = await querys.buscarGerentesMantenimiento();
+    const GerenteSop = await querys.buscarGerentesSoporte();
+    res.render('PaginaPrincipalIngenieroMantenimiento',{Usuario,datosUsuario,TipoUsu,alerta,ReportesEnProgramacion,ReportesEnProgramacionPersonal,GerentesMantenimiento,GerenteSop,formatearFechaHora});
+
+  }catch(error){
+    console.error(error)
+  }
+};
+
+//Actualizar reportes IngenieroMantenimiento
+Controllers.ActualizarReportesIngenieroMantenimiento = async(req,res,next)=>{
+  const Usuario = req.session.usuario;
+  const {Id_reporte,UsuarioAsignado,Estatus,Solucion} = req.body;
+  try{
+    querys.ActualizarReporteIngenieros(Id_reporte,UsuarioAsignado,Usuario,Estatus,Solucion);
+    res.redirect('/Soporte/IngenieroMantenimiento?alerta=Reporte Enviado');
+  }catch(error){
+    console.error(error);
+    res.redirect('/Soporte/IngenieroMantenimiento?alerta=Reporte no Enviado');
+  }
+}
 module.exports = Controllers;

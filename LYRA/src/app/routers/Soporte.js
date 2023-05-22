@@ -17,4 +17,12 @@ router.post('/Asistente/AgregarReporte',SoporteControllers.AñadirReporte);
 //Gerente de Soporte
 //Get
 router.get('/GerenteSoporte',SoporteControllers.PaginaPrincipalGerenteSoporte);
+//Post
+router.post('/GerenteSoporte/ActualizarReportesGerenteSoporte',SoporteControllers.ActualizarReportesGerenteSoporte);
+router.post('/GerenteSoporte/ActualizarReportesGerenteMantenimiento',SoporteControllers.ActualizarReportesGerenteMantenimiento);
+//Gerentete Mantenimiento
+router.get('/GerenteMantenimiento',SoporteControllers.PaginaPrincipalGerenteMantenimiento);
+//Ingeniero Mantenimiento
+router.get('/IngenieroMantenimiento',SoporteControllers.PaginaPrincipalIngenieroMantenimiento);
+router.post('/IngenieroMantenimiento/ActualizarReportesIngenieroMantenimiento',SoporteControllers.ActualizarReportesIngenieroMantenimiento);
 module.exports= router;
