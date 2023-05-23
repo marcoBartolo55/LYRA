@@ -96,7 +96,7 @@ Controllers.InicioSesionPost = async (req, res, next) => {
           res.redirect('/Soporte/GerenteMantenimiento');
           break;
         case 5:
-          // Código para usuario de tipo 5
+          res.redirect('/Soporte/IngenieroSoporte')
           break;
         case 6:
           res.redirect('/Soporte/IngenieroMantenimiento')

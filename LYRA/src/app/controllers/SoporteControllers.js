@@ -258,4 +258,34 @@ Controllers.ActualizarReportesIngenieroMantenimiento = async(req,res,next)=>{
     res.redirect('/Soporte/IngenieroMantenimiento?alerta=Reporte no Enviado');
   }
 }
+
+//Actualizar reportes IngenieroMantenimiento
+Controllers.ActualizarReportesIngenieroSoporte = async(req,res,next)=>{
+  const Usuario = req.session.usuario;
+  const {Id_reporte,Estatus,Solucion} = req.body;
+  try{
+    querys.ActualizarReporteIngenierosSoporte(Id_reporte,Usuario,Estatus,Solucion);
+    res.redirect('/Soporte/IngenieroSoporte?alerta=Reporte Enviado');
+  }catch(error){
+    console.error(error);
+    res.redirect('/Soporte/IngenieroSoporte?alerta=Reporte no Enviado');
+  }
+}
+//Ingeniero Soporte
+Controllers.PaginaPrincipalIngenieroSoporte= async(req,res,next)=>{
+  const Usuario = req.session.usuario;
+  const TipoUsu = req.session.tipo_usuario;
+  const alerta = req.query.alerta;
+  try{
+    const datosUsuario =await querys.buscarUsuario(Usuario);
+    const ReportesEnProcesoPersonal = await querys.BuscarReportesEnProcesoPersonal(Usuario);
+    const ReportesEnProceso = await querys.BuscarReportesEnProceso();
+    const GerentesMantenimiento = await querys.buscarGerentesMantenimiento();
+    const GerenteSop = await querys.buscarGerentesSoporte();
+    res.render('PaginaPrincipalIngenieroSoporte',{Usuario,datosUsuario,TipoUsu,alerta,ReportesEnProceso,ReportesEnProcesoPersonal,GerentesMantenimiento,GerenteSop,formatearFechaHora});
+
+  }catch(error){
+    console.error(error)
+  }
+};
 module.exports = Controllers;

@@ -155,6 +155,40 @@ db.BuscarReportesEnProgramacionPersonal = (Usuario)=>{
 };
 
 //Enrique
+db.BuscarReportesEnProcesoPersonal = (Usuario)=>{
+  return new Promise((resolve, reject) => {
+    con.query(`SELECT r.*, re.descripcion_estatus
+    FROM Reporte AS r
+    JOIN Reporte_Estatus AS re ON r.id_Repore_Estatus = re.id_Reporte_Estatus
+    WHERE r.id_Repore_Estatus = 2 and id_usuario_asignado='${Usuario}'`, (error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+//Enrique
+db.BuscarReportesEnProceso = (Usuario)=>{
+  return new Promise((resolve, reject) => {
+    con.query(`SELECT r.*, re.descripcion_estatus
+    FROM Reporte AS r
+    JOIN Reporte_Estatus AS re ON r.id_Repore_Estatus = re.id_Reporte_Estatus
+    WHERE r.id_Repore_Estatus = 2`, (error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+//Enrique
 db.BuscarReportesEnProgramacion = (Usuario)=>{
   return new Promise((resolve, reject) => {
     con.query(`SELECT r.*, re.descripcion_estatus
@@ -551,21 +585,6 @@ db.ActualizarReporteIngenieros =(Id_Reporte,UsuarioAsignado,UsuarioManipula,Esta
       }
     });
   });
-}
-
-//Enrique
-db.EditarFAQ =(id_FAQs,pregunta,respuesta,Usuario)=>{
-  return new Promise(async(resolve, reject) =>{
-    const query = `UPDATE FAQs SET pregunta = '${pregunta}', respuesta = '${respuesta}' WHERE id_editor = '${Usuario}' AND id_FAQs = '${id_FAQs}'`;
-    con.query(query,(error,result)=>{
-      if (error) {
-        console.error(error);
-        reject(error);
-      } else {
-        resolve(result);
-      }
-    });
-  })
 }
 // Eliminación de datos
 
