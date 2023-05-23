@@ -114,6 +114,33 @@ function UsuarioRegistradoAnteriormente(e){
   };
 
   //Gonzalo
+  function FAQAgregada(e){
+    swal({
+        icon:'success',
+        title: '¡Éxito!',
+        text: "¡FAQ enviada!",
+    });
+  };
+
+  //Gonzalo
+  function FAQEliminada(e){
+    swal({
+        icon:'success',
+        title: '¡Éxito!',
+        text: "¡FAQ eliminada!",
+    });
+  };
+
+  //Gonzalo
+  function FAQEditada(e){
+    swal({
+        icon:'success',
+        title: '¡Éxito!',
+        text: "¡FAQ editada!",
+    });
+  };
+
+  //Gonzalo
   function PassActulizada(e){
     swal({
         icon:'success',

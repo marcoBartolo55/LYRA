@@ -14,6 +14,17 @@ router.get('/Asistente',SoporteControllers.PaginaPrincipalAsistente);
 
 //Post
 router.post('/Asistente/AgregarReporte',SoporteControllers.AñadirReporte);
+
+//FAQS
+//Get
+router.get('/EditorFAQ',SoporteControllers.PaginaPrincipalFAQS);
+
+//Post
+router.post('/EditorFAQ/AgregarFAQ',SoporteControllers.AñadirFAQ);
+router.post('/EditorFAQ/AgregarFAQC',SoporteControllers.AñadirFAQC);
+router.post('/EditorFAQ/EliminarFAQ',SoporteControllers.EliminarFAQ);
+router.post('/EditorFAQ/EditarFAQ',SoporteControllers.EditarFAQ);
+
 //Gerente de Soporte
 //Get
 router.get('/GerenteSoporte',SoporteControllers.PaginaPrincipalGerenteSoporte);

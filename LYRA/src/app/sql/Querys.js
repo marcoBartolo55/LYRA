@@ -188,6 +188,52 @@ db.BuscarReportesEnviadosGerenteMantenimiento = ()=>{
   });
 };
 
+//Enrique
+db.BuscarReportesCerrado = ()=>{
+  return new Promise((resolve, reject) => {
+    con.query(`SELECT r.*, re.descripcion_estatus
+    FROM Reporte AS r
+    JOIN Reporte_Estatus AS re ON r.id_Repore_Estatus = re.id_Reporte_Estatus
+    WHERE r.id_Repore_Estatus = 8`, (error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+//Enrique
+db.BuscarFAQS = (Usuario)=>{
+  return new Promise((resolve, reject) => {
+    con.query(`SELECT * FROM FAQs WHERE id_editor = '${Usuario}'`, (error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+//Enrique
+db.BuscarFAQSTodas = ()=>{
+  return new Promise((resolve, reject) => {
+    con.query(`SELECT * FROM FAQs`, (error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+
 //Todes
 db.buscarUsuario = (nombre_usuario) => {
   return new Promise((resolve, reject) => {
@@ -291,6 +337,23 @@ db.AgregarReporte =(Id_UsarioSolici,Id_Manupulo,Id_GerenteSo,Descripcion)=>{
     });
   })
 }
+
+//Enrique
+db.AgregarFAQ =(Pregunta,Respuesta,Id_editor)=>{
+  return new Promise(async(resolve, reject) =>{
+    const query = `INSERT INTO FAQs VALUES 
+    (default,'${Pregunta}','${Respuesta}','${Id_editor}')`;
+    con.query(query,(error,result)=>{
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  })
+}
+
 
 //Roberto
 db.BuscarPacientes = (Paciente)=>{
@@ -489,5 +552,37 @@ db.ActualizarReporteIngenieros =(Id_Reporte,UsuarioAsignado,UsuarioManipula,Esta
     });
   });
 }
+
+//Enrique
+db.EditarFAQ =(id_FAQs,pregunta,respuesta,Usuario)=>{
+  return new Promise(async(resolve, reject) =>{
+    const query = `UPDATE FAQs SET pregunta = '${pregunta}', respuesta = '${respuesta}' WHERE id_editor = '${Usuario}' AND id_FAQs = '${id_FAQs}'`;
+    con.query(query,(error,result)=>{
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  })
+}
 // Eliminación de datos
+
+//Enrique
+db.EliminarFAQ =(id_FAQs,Usuario)=>{
+  return new Promise(async(resolve, reject) =>{
+    const query = `DELETE FROM FAQs WHERE id_FAQs = '${id_FAQs}' AND id_editor = '${Usuario}'`;
+    con.query(query,(error,result)=>{
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  })
+}
+
 module.exports = db;
+

@@ -1,10 +1,16 @@
 const encrypt = require('../helpers/EncriptarContraseñas');
 const querys = require('../sql/Querys');
 const Controllers={};
-//Get
-Controllers.IndexGet=(req,res,next)=>{
-    req.session.destroy();
-    res.render('Index');
+//Get 
+//Enrique
+Controllers.IndexGet= async(req,res,next)=>{
+  req.session.destroy();
+  try{
+    const FAQS = await querys.BuscarFAQSTodas(); 
+    res.render('Index',{FAQS});
+  }catch(error){
+    console.log(error);
+  }
 };
 //Marco
 Controllers.RegistroPacientesGet=(req,res,next)=>{

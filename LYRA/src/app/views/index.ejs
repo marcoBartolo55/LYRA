@@ -122,16 +122,20 @@
   <div class="content">
     <div class="title"><span>Preguntas frecuentes</span></div>
     <div class="text">
-      <!--Una FAQ-->
-      <div class="faq-box">
-        <div class="question">
-          <h3>¿Cómo puedo crear una cuenta?</h3>
+      <%if(typeof FAQS !== 'undefined' && FAQS.length>0){%>
+        <%for(let i = 0; i<FAQS.length;i++){%>
+        <!--Una FAQ-->
+        <div class="faq-box">
+          <div class="question">
+            <h3><%=FAQS[i].pregunta%></h3>
+          </div>
+          <div class="answer">
+            <p><%=FAQS[i].respuesta%></p>
+          </div>
         </div>
-        <div class="answer">
-          <p>Para crear una cuenta, simplemente haz clic en el botón "Registrarse" y completa el formulario con tu información personal.</p>
-        </div>
-      </div>
-      <!--Una FAQ-->
+        <!--Una FAQ-->
+        <%}%>
+      <%}%>
     </div>
   </div>
 </section>

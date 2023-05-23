@@ -44,6 +44,75 @@ Controllers.AñadirReporte = async (req,res,next)=>{
   }  
 }
 
+//FAQ'S
+Controllers.PaginaPrincipalFAQS =async (req,res,next) => {
+  const Usuario = req.session.usuario;
+  const TipoUsu = req.session.tipo_usuario;
+  const alerta = req.query.alerta;
+  try{
+    const datosUsuario =await querys.buscarUsuario(Usuario); //si
+    const GerenteSop = await querys.buscarGerentesSoporte(); //no
+    const PacyDoc = await querys.buscarDoctoresyPacientes(); //no
+    const Reportes = await querys.BuscarReportesCerrado(); 
+    const FAQS = await querys.BuscarFAQS(Usuario); 
+    res.render('PaginaPrincipalFAQS',{Usuario,TipoUsu,alerta,datosUsuario,PacyDoc,GerenteSop,Reportes,formatearFechaHora,FAQS});
+  }catch(error){
+    console.log(error);
+  }
+};
+Controllers.AñadirFAQ= async (req,res,next)=>{
+  const Usuario = req.session.usuario;
+  const {Pregunta,Respuesta} = req.body;
+  try{
+    const Reporte = await querys.AgregarFAQ(Pregunta,Respuesta,Usuario);
+    if (Reporte) {
+      return res.redirect('/Soporte/EditorFAQ?alerta=FAQAgregada')
+    }
+  }catch(error){
+    console.error(error);
+    return res.redirect('/Soporte/EditorFAQ?alerta=Error')
+  }  
+}
+Controllers.AñadirFAQC= async (req,res,next)=>{
+  const Usuario = req.session.usuario;
+  const {Pregunta2,Respuesta2} = req.body;
+  try{
+    const Reporte = await querys.AgregarFAQ(Pregunta2,Respuesta2,Usuario);
+    if (Reporte) {
+      return res.redirect('/Soporte/EditorFAQ?alerta=FAQAgregada')
+    }
+  }catch(error){
+    console.error(error);
+    return res.redirect('/Soporte/EditorFAQ?alerta=Error')
+  }  
+}
+Controllers.EliminarFAQ= async (req,res,next)=>{
+  const {id_FAQs} = req.body;
+  const Usuario = req.session.usuario;
+  try{
+    const Reporte = await querys.EliminarFAQ(id_FAQs,Usuario);
+    if (Reporte) {
+      return res.redirect('/Soporte/EditorFAQ?alerta=FAQEliminada')
+    }
+  }catch(error){
+    console.error(error);
+    return res.redirect('/Soporte/EditorFAQ?alerta=Error')
+  }  
+}
+Controllers.EditarFAQ= async (req,res,next)=>{
+  const {id_FAQs, respuesta, pregunta} = req.body;
+  const Usuario = req.session.usuario;
+  try{
+    const Reporte = await querys.EditarFAQ(id_FAQs,pregunta,respuesta,Usuario);
+    if (Reporte) {
+      return res.redirect('/Soporte/EditorFAQ?alerta=FAQEditada')
+    }
+  }catch(error){
+    console.error(error);
+    return res.redirect('/Soporte/EditorFAQ?alerta=Error')
+  }  
+}
+
 //Gerente de Soporte
 Controllers.PaginaPrincipalGerenteSoporte= async (req,res,next)=>{
   const Usuario = req.session.usuario;
