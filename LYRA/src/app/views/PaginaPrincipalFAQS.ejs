@@ -251,19 +251,19 @@
                                 <td data-label="Estatus">
                                     <div class="estatus"><%=Reportes[i].descripcion_estatus%></div>
                                 </td>
-                                <td data-label="Descripción">
-                                    <div class="descrip"><%=Reportes[i].descripcion_reporte%></div>
-                                    <input name="" type="hidden" name="Pregunta" value="<%=Reportes[i].descripcion_reporte%>">
+                                <td data-label="Pregunta">
+                                    <div class="descrip">¿<%=Reportes[i].descripcion_reporte%>?</div>
+                                    <input type="hidden" name="Pregunta2" value="¿<%=Reportes[i].descripcion_reporte%>?">
                                 </td>
                                 <td data-label="Solución">
                                     <div class="descrip"><%=Reportes[i].solucion_reporte%></div>
-                                    <input type="hidden"  name="Respuesta" value="<%=Reportes[i].solucion_reporte%>">
+                                    <input type="hidden"  name="Respuesta2" value="<%=Reportes[i].solucion_reporte%>">
                                 </td>
                                 <td data-label="Fecha">
                                     <div class="descrip"><%=formatearFechaHora(Reportes[i].fecha_hora)%></div>
                                 </td>
                                 <td data-label="Acciones" class="center">
-                                    <button type="submit" class="accion"><i class='bx bx-pencil mov'></i></button>
+                                    <button type="submit" class="accion"><i class='bx bx-plus-circle mov'></i></button>
                                 </td>    
                             </form>
                         </tr>

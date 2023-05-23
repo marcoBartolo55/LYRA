@@ -586,6 +586,20 @@ db.ActualizarReporteIngenieros =(Id_Reporte,UsuarioAsignado,UsuarioManipula,Esta
     });
   });
 }
+
+db.EditarFAQ=(id_FAQs,pregunta,respuesta,Usuario)=>{
+  return new Promise(async(resolve, reject)=>{
+    const query = `update FAQs set pregunta='${pregunta}', respuesta='${respuesta}' where id_FAQs='${id_FAQs}'  and id_editor='${Usuario}' `;
+    con.query(query,(error,result)=>{
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+}
 // Eliminación de datos
 
 //Enrique
