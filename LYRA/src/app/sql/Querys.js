@@ -155,6 +155,40 @@ db.BuscarReportesEnProgramacionPersonal = (Usuario)=>{
 };
 
 //Enrique
+db.BuscarReportesEnProcesoPersonal = (Usuario)=>{
+  return new Promise((resolve, reject) => {
+    con.query(`SELECT r.*, re.descripcion_estatus
+    FROM Reporte AS r
+    JOIN Reporte_Estatus AS re ON r.id_Repore_Estatus = re.id_Reporte_Estatus
+    WHERE r.id_Repore_Estatus = 2 and id_usuario_asignado='${Usuario}'`, (error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+//Enrique
+db.BuscarReportesEnProceso = (Usuario)=>{
+  return new Promise((resolve, reject) => {
+    con.query(`SELECT r.*, re.descripcion_estatus
+    FROM Reporte AS r
+    JOIN Reporte_Estatus AS re ON r.id_Repore_Estatus = re.id_Reporte_Estatus
+    WHERE r.id_Repore_Estatus = 2`, (error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+//Enrique
 db.BuscarReportesEnProgramacion = (Usuario)=>{
   return new Promise((resolve, reject) => {
     con.query(`SELECT r.*, re.descripcion_estatus
@@ -479,6 +513,26 @@ db.ActualizarReporteIngenieros =(Id_Reporte,UsuarioAsignado,UsuarioManipula,Esta
     const fechaHoraFormateada = fechaHoraActual.format('YYYY-MM-DD HH:mm:ss');
     const Estatus=parseInt(Estado) 
     const query = `update reporte set id_usuario_manipulo_Reporte='${UsuarioManipula}', id_Repore_Estatus=${Estatus}, id_usuario_asignado='${UsuarioAsignado}', fecha_hora='${fechaHoraFormateada}',solucion_reporte='${Solucion}' where id_reporte=${Id_Reporte} `;
+    con.query(query,(error,result)=>{
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+}
+
+//Enrique
+db.ActualizarReporteIngenierosSoporte =(Id_Reporte,UsuarioManipula,Estado,Solucion)=>{
+  return new Promise(async(resolve, reject)=>{
+    // Obtener la fecha y hora actual en la zona horaria de México
+    const fechaHoraActual = moment().tz('America/Mexico_City');
+    // Formatear la fecha y hora en el formato deseado para MySQL (datetime: 'YYYY-MM-DD HH:MM:SS')
+    const fechaHoraFormateada = fechaHoraActual.format('YYYY-MM-DD HH:mm:ss');
+    const Estatus=parseInt(Estado) 
+    const query = `update reporte set id_usuario_manipulo_Reporte='${UsuarioManipula}', id_Repore_Estatus=${Estatus}, fecha_hora='${fechaHoraFormateada}',solucion_reporte='${Solucion}' where id_reporte=${Id_Reporte} `;
     con.query(query,(error,result)=>{
       if (error) {
         console.error(error);

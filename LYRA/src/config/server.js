@@ -5,7 +5,7 @@ const session = require('express-session');
 const app = express();
 
 //configuración
-app.set('port', process.env.PORT || 4000);
+app.set('port', process.env.PORT || 8080);
 app.set('view engine', 'ejs');
 app.set('views',path.join(__dirname,'../app/views'));
 app.use(express.static(path.join(__dirname,'../app/public')));

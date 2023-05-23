@@ -25,4 +25,9 @@ router.get('/GerenteMantenimiento',SoporteControllers.PaginaPrincipalGerenteMant
 //Ingeniero Mantenimiento
 router.get('/IngenieroMantenimiento',SoporteControllers.PaginaPrincipalIngenieroMantenimiento);
 router.post('/IngenieroMantenimiento/ActualizarReportesIngenieroMantenimiento',SoporteControllers.ActualizarReportesIngenieroMantenimiento);
+//Ingeniero Soporte
+router.get('/IngenieroSoporte',SoporteControllers.PaginaPrincipalIngenieroSoporte);
+router.post('/IngenieroMantenimiento/ActualizarReportesIngenieroSoporte',SoporteControllers.ActualizarReportesIngenieroSoporte);
+
+
 module.exports= router;
