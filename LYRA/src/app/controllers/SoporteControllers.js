@@ -264,13 +264,14 @@ Controllers.ActualizarReportesIngenieroSoporte = async(req,res,next)=>{
   const Usuario = req.session.usuario;
   const {Id_reporte,Estatus,Solucion} = req.body;
   try{
-    querys.ActualizarReporteIngenierosSoporte(Id_reporte,Usuario,Estatus,Solucion);
+    querys.(Id_reporte,Usuario,Estatus,Solucion);
     res.redirect('/Soporte/IngenieroSoporte?alerta=Reporte Enviado');
   }catch(error){
     console.error(error);
     res.redirect('/Soporte/IngenieroSoporte?alerta=Reporte no Enviado');
   }
 }
+
 //Ingeniero Soporte
 Controllers.PaginaPrincipalIngenieroSoporte= async(req,res,next)=>{
   const Usuario = req.session.usuario;
@@ -281,8 +282,10 @@ Controllers.PaginaPrincipalIngenieroSoporte= async(req,res,next)=>{
     const ReportesEnProcesoPersonal = await querys.BuscarReportesEnProcesoPersonal(Usuario);
     const ReportesEnProceso = await querys.BuscarReportesEnProceso();
     const GerentesMantenimiento = await querys.buscarGerentesMantenimiento();
+    const BuscarReportesSolucionadoPersonal = await querys.BuscarReportesSolucionadoPersonal(Usuario);
+    const BuscarReportesSolucionados = await querys.BuscarReportesSolucionados();
     const GerenteSop = await querys.buscarGerentesSoporte();
-    res.render('PaginaPrincipalIngenieroSoporte',{Usuario,datosUsuario,TipoUsu,alerta,ReportesEnProceso,ReportesEnProcesoPersonal,GerentesMantenimiento,GerenteSop,formatearFechaHora});
+    res.render('PaginaPrincipalIngenieroSoporte',{Usuario,datosUsuario,TipoUsu,alerta,ReportesEnProceso,ReportesEnProcesoPersonal,GerentesMantenimiento,GerenteSop,formatearFechaHora,BuscarReportesSolucionadoPersonal,BuscarReportesSolucionados});
 
   }catch(error){
     console.error(error)

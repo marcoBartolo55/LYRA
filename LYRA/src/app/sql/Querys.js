@@ -189,6 +189,41 @@ db.BuscarReportesEnProceso = (Usuario)=>{
 };
 
 //Enrique
+db.BuscarReportesSolucionados = (Usuario)=>{
+  return new Promise((resolve, reject) => {
+    con.query(`SELECT r.*, re.descripcion_estatus
+    FROM Reporte AS r
+    JOIN Reporte_Estatus AS re ON r.id_Repore_Estatus = re.id_Reporte_Estatus
+    WHERE r.id_Repore_Estatus = 7`, (error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+
+//Enrique
+db.BuscarReportesSolucionadoPersonal = (Usuario)=>{
+  return new Promise((resolve, reject) => {
+    con.query(`SELECT r.*, re.descripcion_estatus
+    FROM Reporte AS r
+    JOIN Reporte_Estatus AS re ON r.id_Repore_Estatus = re.id_Reporte_Estatus
+    WHERE r.id_Repore_Estatus = 7 and id_usuario_asignado='${Usuario}'`, (error, result) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+//Enrique
 db.BuscarReportesEnProgramacion = (Usuario)=>{
   return new Promise((resolve, reject) => {
     con.query(`SELECT r.*, re.descripcion_estatus
