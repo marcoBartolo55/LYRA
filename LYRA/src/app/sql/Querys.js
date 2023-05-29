@@ -30,7 +30,7 @@ db.BuscarReportesAbiertos = ()=>{
     WHERE r.id_Repore_Estatus = 1`, (error, result) => {
       if (error) {
         console.error(error);
-        reject(error);
+        reject(error);  
       } else {
         resolve(result);
       }
